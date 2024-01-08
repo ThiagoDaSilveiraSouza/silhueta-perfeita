@@ -10,14 +10,14 @@ import { CardsContainer } from "./components";
 
 export const FirstBenefitsSection = () => {
   return (
-    <CentralizerContainer alignItems="center" flexDirection="column">
+    <CentralizerContainer align-items="center" flex-direction="column">
       <LazzyAnimationContainer>
-        <Flex flexDirection="column" gap="64px" alignItems="center">
-          <Flex flexDirection="column" alignItems="center" gap="45px">
-            <Heading maxWidth="632px" textAlign="center">
+        <Flex flex-direction="column" gap="64px" align-items="center">
+          <Flex flex-direction="column" align-items="center" gap="45px">
+            <Heading max-width="632px" text-align="center">
               Dê Adeus às Inseguranças do Dia-a-Dia
             </Heading>
-            <Text textAlign="center" maxWidth="376px">
+            <Text text-align="center" max-width="376px">
               Encontre a solução para preocupações comuns que afetam sua
               autoestima.
             </Text>

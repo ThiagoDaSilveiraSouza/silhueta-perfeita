@@ -1,10 +1,8 @@
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 import { CssBaseProps } from "../interfaces";
 
-
-export const Flex = styled.div<CssBaseProps>`
-  display: flex;
-  ${(props) => {
+export const BaseComponent = css<CssBaseProps>`
+    ${(props) => {
     return css`
       position: ${props["position"]};
       flex: ${props["flex"]};

@@ -1,7 +1,7 @@
-import styled, { CSSProperties, css } from "styled-components";
-import { ThemeProps } from "../interfaces";
+import styled from "styled-components";
+import { CssBaseProps, ThemeProps } from "../interfaces";
 
-interface TextProps extends CSSProperties {
+interface TextProps extends CssBaseProps {
   theme: ThemeProps
 }
 
@@ -11,12 +11,4 @@ export const Text = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.fonts.body};
   font-style: normal;
   font-weight: 400;
-
-  ${({ textAlign, maxWidth }) => {
-
-    return css`
-      max-width: ${maxWidth};
-      text-align: ${textAlign};
-    `
-  }};
 `

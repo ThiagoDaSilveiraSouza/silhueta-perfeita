@@ -1,5 +1,5 @@
-import styled, { CSSProperties, css } from "styled-components";
-import { ThemeProps } from "../interfaces";
+import styled, { css } from "styled-components";
+import { CssBaseProps, ThemeProps } from "../interfaces";
 
 
 interface HeadingProps {
@@ -22,19 +22,17 @@ const createTitles = {
 }
 
 
-interface HeadingProps extends CSSProperties {
+interface HeadingProps extends CssBaseProps {
   theme: ThemeProps;
 }
 export const Heading = styled.h2<HeadingProps>`
+  ${(props) => {
+    const propsNames = Object.keys(props)
+    return `
+      ${propsNames.map((currentProp) => `${currentProp}:${props[currentProp as keyof typeof props]}`)}
+      `
+  }}
   ${({ theme, as }) => createTitles[as as keyof typeof createTitles] ? createTitles[as as keyof typeof createTitles](theme) : createTitles.h2(theme)};
-  ${({ maxWidth, textAlign }) => {
-
-    return css`
-      max-width: ${maxWidth};
-      text-align: ${textAlign};
-    `
-  }};
-
   b{
     font-weight: bolder;
   }

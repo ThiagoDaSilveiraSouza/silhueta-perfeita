@@ -13,12 +13,12 @@ export const CallToAction2 = () => {
       <CentralizerContainer
         style={{ padding: "72px 0", flexWrap: "wrap", gap: "56px" }}
       >
-        <Flex flexDirection="column" gap="45px">
+        <Flex flex-direction="column" gap="45px">
           <Heading as="h2" style={{ textAlign: "start", maxWidth: "570px" }}>
             Tenha <b>o corpo dos sonhos</b> com a cinta modeladora{" "}
             <b>Silhueta Perfeita</b>
           </Heading>
-          <Text style={{ maxWidth: 410 }}>
+          <Text max-width="410px">
             Veja Como a Silhueta Perfeita Trabalha em Harmonia com Seu Corpo
             para Criar Curvas Perfeitas
           </Text>

@@ -1,3 +1,4 @@
+export * from "./BaseComponent"
 export * from "./CentralizerContainer"
 export * from "./Flex"
 export * from "./Heading"

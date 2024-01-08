@@ -33,22 +33,29 @@ const RightSide = styled.div`
 export const FirstSection = () => {
   return (
     <LazzyAnimationContainer>
-      <CentralizerContainer
-        style={{ padding: "72px 0", flexWrap: "wrap", gap: "56px" }}
-      >
+      <CentralizerContainer padding={"72 0"} flex-wrap="wrap" gap="56px">
         <LeftSide>
           <img src={logo} />
-          <Heading as="h2" style={{ textAlign: "start", maxWidth: "570px" }}>
+          <Heading
+            as="h2"
+            max-width="570px"
+            justify-content="start"
+            text-align="start"
+          >
             Tenha <b>o corpo dos sonhos</b> com a cinta modeladora{" "}
             <b>Silhueta Perfeita</b>
           </Heading>
-          <Text style={{maxWidth: 410}}>
+          <Text width="410px">
             Veja Como a Silhueta Perfeita Trabalha em Harmonia com Seu Corpo
             para Criar Curvas Perfeitas
           </Text>
           <Flex style={{ gap: "15px" }}>
             <MainButton>Quero o Corpo Perfeito</MainButton>
-            <img src={PlayButton} alt="play button" style={{ maxWidth: "55px" }} />
+            <img
+              src={PlayButton}
+              alt="play button"
+              style={{ maxWidth: "55px" }}
+            />
           </Flex>
         </LeftSide>
         <RightSide>

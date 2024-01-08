@@ -46,28 +46,28 @@ export const Card = ({ title, text }: CardProps) => {
   return (
     <Flex
       position="relative"
-      flex= "0 1 279px"
-      flexDirection="column"
-      alignItems="center"
+      flex="0 1 279px"
+      flex-direction="column"
+      align-items="center"
       padding="120px 17px 25px"
       background="rgba(224, 209, 176, 0.1)"
-      borderRadius="25px"
+      border-radius="25px"
       margin="45px 0 0 0"
-      boxSizing="border-box"
+      box-sizing="border-box"
       gap="14px"
     >
       <Squad />
-      <Heading as="h3" textAlign="center">
+      <Heading as="h3" text-align="center">
         <b>{title}</b>
       </Heading>
-      <Text textAlign="center">{text}</Text>
+      <Text text-align="center">{text}</Text>
     </Flex>
   );
 };
 
 export const CardsContainer = () => {
   return (
-    <Flex flex="1 1 auto" gap="25px" flexWrap="wrap" justifyContent="center">
+    <Flex flex="1 1 auto" gap="25px" flex-wrap="wrap" justify-content="center">
       {CardList.map((currentCard, index) => (
         <Card
           {...currentCard}
