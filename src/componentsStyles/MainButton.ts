@@ -7,11 +7,12 @@ interface MainButtonProps extends CSSProperties {
 
 
 export const MainButton = styled.button<MainButtonProps>`
-  background: ${({ theme }) => theme.colors.headingFontColor};
+  background: ${({ theme }) => theme.colors.mainButtonBackgroundColor};
   color: ${({ theme }) => theme.colors.secondaryBackgroundColor};
   font-size:${({ theme }) => theme.fonts.bodySize2};
   text-align: center;
   padding: 15px 30px;
+  border:none;
   border-radius: 50px;
   width: fit-content;
   height: fit-content;

@@ -1,17 +1,19 @@
+import { CSSProperties } from "styled-components"
 
 interface FontProps {
-  heading: string
-  headingSize: string
-  bodySize1: string
-  bodySize2: string
-  body: string
+  heading: CSSProperties["fontSize"]
+  headingSize: CSSProperties["fontSize"]
+  bodySize1: CSSProperties["fontSize"]
+  bodySize2: CSSProperties["fontSize"]
+  body: CSSProperties["fontSize"]
 }
 
 interface ColorProps {
-  headingFontColor: string
-  bodyFontColor: string
-  mainBackgroundColor: string
-  secondaryBackgroundColor: string
+  headingFontColor: CSSProperties["color"]
+  bodyFontColor: CSSProperties["color"];
+  mainBackgroundColor: CSSProperties["background"]
+  secondaryBackgroundColor: CSSProperties["background"]
+  mainButtonBackgroundColor: CSSProperties["background"]
 }
 
 export interface ThemeProps {

@@ -1,0 +1,181 @@
+import { ReactNode, useCallback, useMemo, useState, useEffect } from "react";
+import styled, { CSSProperties } from "styled-components";
+import { ArrowCicle } from "../ArrowCircle";
+
+interface CarouselContainerProps {
+  width?: CSSProperties["width"];
+  height?: CSSProperties["height"];
+}
+
+const ComponentContainer = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  gap: 42px;
+  max-width: 100%;
+  overflow: hidden;
+`;
+
+const CarouselContainer = styled.div<CarouselContainerProps>`
+  position: relative;
+  flex: 1 1 100%;
+  width: ${({ width }) => width || "100%"};
+  display: flex;
+  max-width: 100%;
+  height: ${({ height }) => height || "fit-content"};
+  overflow-x: hidden;
+  scroll-snap-type: mandatory;
+`;
+
+const CarouselSlide = styled.div`
+  display: flex;
+  width: 100%;
+  height: fit-content;
+`;
+
+export const SlideItem = styled.div`
+  display: flex;
+  position: relative;
+  flex: none;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 15px;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 100%;
+  }
+`;
+
+interface CarouselProps {
+  width?: CSSProperties["width"];
+  height?: CSSProperties["height"];
+  itemList: ReactNode[];
+  setCurrentIndex?: (currentIndex: number) => void;
+}
+
+export const Carousel = ({
+  width,
+  height,
+  itemList,
+  setCurrentIndex,
+}: CarouselProps) => {
+  const updatedListItem = useMemo(() => {
+    const listFirstItem = itemList[0];
+    const listLastItem = itemList[itemList.length - 1];
+    return [listLastItem, ...itemList, listFirstItem];
+  }, [itemList]);
+
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    const isLastSlideIndex = currentSlideIndex === updatedListItem.length - 2;
+
+    if (isLastSlideIndex) {
+      console.log("isLastSlideIndex", currentSlideIndex);
+      setTransitionEnabled(false);
+      setCurrentSlideIndex(0);
+      setTimeout(() => {
+        setTransitionEnabled(true);
+        setCurrentSlideIndex(1);
+      }, 0);
+      return;
+    }
+
+    setTransitionEnabled(true);
+    setCurrentSlideIndex((prevSlide) => {
+      const nextIndex = prevSlide + 1;
+      if (nextIndex > updatedListItem.length - 1) {
+        setTransitionEnabled(false);
+        setCurrentSlideIndex(1);
+        return 1;
+      }
+      return nextIndex;
+    });
+  }, [updatedListItem, currentSlideIndex]);
+
+  const prevSlide = useCallback(() => {
+    const isFirstSlideIndex = currentSlideIndex === 1;
+
+    if (isFirstSlideIndex) {
+      console.log("isFirstSlideIndex", currentSlideIndex);
+      setTransitionEnabled(false);
+      setCurrentSlideIndex(updatedListItem.length - 1);
+      setTimeout(() => {
+        setTransitionEnabled(true);
+        setCurrentSlideIndex(updatedListItem.length - 2);
+      }, 0);
+      return;
+    }
+    setTransitionEnabled(true);
+    setCurrentSlideIndex((prevSlide) => {
+      const prevIndex = prevSlide - 1;
+      if (prevIndex < 0) {
+        setTransitionEnabled(false);
+        setCurrentSlideIndex(updatedListItem.length - 2);
+        return updatedListItem.length - 2;
+      }
+      return prevIndex;
+    });
+  }, [updatedListItem, currentSlideIndex]);
+
+  useEffect(() => {
+    const container = document.getElementById("carousel-container");
+    const handleTransitionEnd = () => {
+      if (container) {
+        container.style.transition = "transform 0.3s ease-in-out";
+      }
+    };
+
+    if (container) {
+      container.addEventListener("transitionend", handleTransitionEnd);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("transitionend", handleTransitionEnd);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    setCurrentIndex && setCurrentIndex(currentSlideIndex);
+  }, [currentSlideIndex, setCurrentIndex]);
+
+  return (
+    <ComponentContainer style={{ position: "relative", flex: "1 1 auto" }}>
+      <CarouselContainer id="carousel-container" width={width} height={height}>
+        <CarouselSlide
+          style={{
+            transform: `translateX(-${currentSlideIndex * 100}%)`,
+            transition: transitionEnabled ? "0.6s" : "none",
+          }}
+        >
+          {updatedListItem.map((currentItem, index) => (
+            <SlideItem key={index + "carousel-item"}>{currentItem}</SlideItem>
+          ))}
+        </CarouselSlide>
+      </CarouselContainer>
+      <ButtonContainer>
+        <button onClick={prevSlide}>
+          <ArrowCicle direction="left" />
+        </button>
+        <button onClick={nextSlide}>
+          <ArrowCicle />
+        </button>
+      </ButtonContainer>
+    </ComponentContainer>
+  );
+};

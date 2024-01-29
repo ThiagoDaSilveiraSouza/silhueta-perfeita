@@ -45,29 +45,29 @@ const CardList: CardProps[] = [
 export const Card = ({ title, text }: CardProps) => {
   return (
     <Flex
-      position="relative"
-      flex="0 1 279px"
-      flex-direction="column"
-      align-items="center"
-      padding="120px 17px 25px"
-      background="rgba(224, 209, 176, 0.1)"
-      border-radius="25px"
-      margin="45px 0 0 0"
-      box-sizing="border-box"
-      gap="14px"
+      $position="relative"
+      $flex="0 1 279px"
+      $flex-direction="column"
+      $align-items="center"
+      $padding="120px 17px 25px"
+      $background="rgba(224, 209, 176, 0.1)"
+      $border-radius="25px"
+      $margin="45px 0 0 0"
+      $box-sizing="border-box"
+      $gap="14px"
     >
       <Squad />
-      <Heading as="h3" text-align="center">
+      <Heading as="h3" $text-align="center">
         <b>{title}</b>
       </Heading>
-      <Text text-align="center">{text}</Text>
+      <Text $text-align="center">{text}</Text>
     </Flex>
   );
 };
 
 export const CardsContainer = () => {
   return (
-    <Flex flex="1 1 auto" gap="25px" flex-wrap="wrap" justify-content="center">
+    <Flex $flex="1 1 auto" $gap="25px" $flex-wrap="wrap" $justify-content="center">
       {CardList.map((currentCard, index) => (
         <Card
           {...currentCard}

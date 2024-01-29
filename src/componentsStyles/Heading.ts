@@ -27,10 +27,29 @@ interface HeadingProps extends CssBaseProps {
 }
 export const Heading = styled.h2<HeadingProps>`
   ${(props) => {
-    const propsNames = Object.keys(props)
-    return `
-      ${propsNames.map((currentProp) => `${currentProp}:${props[currentProp as keyof typeof props]}`)}
-      `
+    return css`
+      position: ${props["$position"]};
+      flex: ${props["$flex"]};
+      flex-direction: ${props["$flex-direction"]};
+      justify-content: ${props["$justify-content"]};
+      justify-self: ${props["justify-self"]};
+      align-items: ${props["$align-items"]};
+      align-self: ${props["align-self"]};
+      gap: ${props["$gap"]};
+      flex-wrap: ${props["$flex-wrap"]};
+      width: ${props["width"]};
+      max-width: ${props["$max-width"]};
+      height: ${props["height"]};
+      max-height: ${props["max-height"]};
+      padding: ${props["$padding"]};
+      margin: ${props["$margin"]};
+      background: ${props["$background"]};
+      opacity: ${props["opacity"]};
+      border-radius: ${props["$border-radius"]};
+      box-sizing: ${props["$box-sizing"]};
+      overflow: ${props["overflow"]};
+      text-align: ${props["$text-align"]};
+  `
   }}
   ${({ theme, as }) => createTitles[as as keyof typeof createTitles] ? createTitles[as as keyof typeof createTitles](theme) : createTitles.h2(theme)};
   b{

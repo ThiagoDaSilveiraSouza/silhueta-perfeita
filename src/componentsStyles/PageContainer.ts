@@ -5,9 +5,10 @@ export const PageContainer = styled.div<CSSProperties>`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  gap:${({ gap }) => {
+  ${({ gap, padding }) => {
     return css`
       gap:${gap};
+      padding: ${padding || "142px 0"}
     `
   }}
 `
