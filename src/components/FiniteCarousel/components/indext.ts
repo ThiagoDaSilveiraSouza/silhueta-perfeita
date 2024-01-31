@@ -1,0 +1,1 @@
+export * from "../../../pages/HomePage/sections/Depoiments/components/DepoimentsCard"

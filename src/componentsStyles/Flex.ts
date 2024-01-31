@@ -7,6 +7,8 @@ export const Flex = styled.div<CssBaseProps>`
   ${(props) => {
     return css`
       position: ${props["$position"]};
+      left: ${props["$left"]};
+      top: ${props["$top"]};
       flex: ${props["$flex"]};
       flex-direction: ${props["$flex-direction"]};
       justify-content: ${props["$justify-content"]};
@@ -26,6 +28,7 @@ export const Flex = styled.div<CssBaseProps>`
       border-radius: ${props["$border-radius"]};
       box-sizing: ${props["$box-sizing"]};
       overflow: ${props["overflow"]};
+      box-shadow: ${props["$box-shadow"]}
     `
   }}
 `

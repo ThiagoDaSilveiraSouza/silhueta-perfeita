@@ -2,6 +2,8 @@ import { CSSProperties } from "styled-components"
 
 export interface CssBaseProps {
   "$position"?: CSSProperties["position"]
+  "$top"?: CSSProperties["top"]
+  "$left"?: CSSProperties["left"]
   "display"?: CSSProperties["display"]
   "$flex-direction"?: CSSProperties["flexDirection"]
   "$flex"?: CSSProperties["flex"]
@@ -23,4 +25,5 @@ export interface CssBaseProps {
   "$box-sizing"?: CSSProperties["boxSizing"]
   "overflow"?: CSSProperties["overflow"]
   "$text-align"?: CSSProperties["textAlign"]
+  "$box-shadow"?: CSSProperties["boxShadow"]
 }

@@ -1,21 +1,25 @@
 import { ReactNode, useCallback, useMemo, useState, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
 import { ArrowCicle } from "../ArrowCircle";
+import { CssBaseProps } from "../../interfaces";
 
-interface CarouselContainerProps {
-  width?: CSSProperties["width"];
-  height?: CSSProperties["height"];
+interface ComponentContainerProps {
+  $gap: CSSProperties["gap"];
 }
 
-const ComponentContainer = styled.div`
+const ComponentContainer = styled.div<ComponentContainerProps>`
   flex: 1 1 auto;
   display: flex;
   width: fit-content;
   flex-direction: column;
-  gap: 42px;
+  gap: ${({ $gap }) => $gap};
   max-width: 100%;
   overflow: hidden;
 `;
+interface CarouselContainerProps {
+  width?: CSSProperties["width"];
+  height?: CSSProperties["height"];
+}
 
 const CarouselContainer = styled.div<CarouselContainerProps>`
   position: relative;
@@ -34,7 +38,7 @@ const CarouselSlide = styled.div`
   height: fit-content;
 `;
 
-export const SlideItem = styled.div`
+const SlideItem = styled.div`
   display: flex;
   position: relative;
   flex: none;
@@ -46,9 +50,14 @@ export const SlideItem = styled.div`
   scroll-snap-align: start;
 `;
 
-const ButtonContainer = styled.div`
+interface ButtonContainerProps {
+  $justifycontrols: CSSProperties["justifyContent"];
+}
+
+const ButtonContainer = styled.div<ButtonContainerProps>`
   display: flex;
   gap: 15px;
+  justify-content: ${({ $justifycontrols }) => $justifycontrols};
   button {
     display: flex;
     justify-content: center;
@@ -63,6 +72,8 @@ interface CarouselProps {
   height?: CSSProperties["height"];
   itemList: ReactNode[];
   setCurrentIndex?: (currentIndex: number) => void;
+  justifyControls?: CSSProperties["justifyContent"];
+  controlsGapDistance?: CssBaseProps["$gap"];
 }
 
 export const Carousel = ({
@@ -70,6 +81,8 @@ export const Carousel = ({
   height,
   itemList,
   setCurrentIndex,
+  justifyControls = "normal",
+  controlsGapDistance = "45px",
 }: CarouselProps) => {
   const updatedListItem = useMemo(() => {
     const listFirstItem = itemList[0];
@@ -155,7 +168,10 @@ export const Carousel = ({
   }, [currentSlideIndex, setCurrentIndex]);
 
   return (
-    <ComponentContainer style={{ position: "relative", flex: "1 1 auto" }}>
+    <ComponentContainer
+      style={{ position: "relative", flex: "1 1 auto" }}
+      $gap={controlsGapDistance}
+    >
       <CarouselContainer id="carousel-container" width={width} height={height}>
         <CarouselSlide
           style={{
@@ -168,7 +184,7 @@ export const Carousel = ({
           ))}
         </CarouselSlide>
       </CarouselContainer>
-      <ButtonContainer>
+      <ButtonContainer $justifycontrols={justifyControls}>
         <button onClick={prevSlide}>
           <ArrowCicle direction="left" />
         </button>
