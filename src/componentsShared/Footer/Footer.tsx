@@ -46,7 +46,7 @@ const ButtonContainer = styled.div`
 `;
 
 interface ComponentLinkButtonProps {
-  $type: "dark" | "light";
+  $type?: "dark" | "light";
 }
 
 const ComponentLinkButton = styled.a<ComponentLinkButtonProps>`
