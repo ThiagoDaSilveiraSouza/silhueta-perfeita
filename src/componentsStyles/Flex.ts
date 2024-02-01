@@ -17,7 +17,7 @@ export const Flex = styled.div<CssBaseProps>`
       align-self: ${props["align-self"]};
       gap: ${props["$gap"]};
       flex-wrap: ${props["$flex-wrap"]};
-      width: ${props["width"]};
+      width: ${props["width"] || "100%"} ;
       max-width: ${props["$max-width"]};
       height: ${props["height"]};
       max-height: ${props["max-height"]};

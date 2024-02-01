@@ -1,3 +1,4 @@
+import { Section8 } from "../../componentsShared";
 import { PageContainer } from "../../componentsStyles";
 import {
   CallToAction2,
@@ -5,6 +6,9 @@ import {
   FirstBenefitsSection,
   FirstSection,
   Section5,
+  Section6,
+  Section7,
+  Section9,
 } from "./sections";
 
 export const HomePage = () => {
@@ -15,6 +19,10 @@ export const HomePage = () => {
       <CallToAction2 />
       <Depoiments />
       <Section5 />
+      <Section6 />
+      <Section7 />
+      <Section8 />
+      <Section9 />
     </PageContainer>
   );
 };

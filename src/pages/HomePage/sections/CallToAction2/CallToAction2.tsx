@@ -23,7 +23,7 @@ export const CallToAction2 = () => {
           $padding="72px 0"
           $flex-wrap="wrap"
           $gap="56px"
-          width="100%"
+          $max-width="100%"
           $justify-content="center"
         >
           <Flex
@@ -49,7 +49,7 @@ export const CallToAction2 = () => {
             </Flex>
           </Flex>
           <div>
-            <Carousel itemList={cardsComponentsList} width="620px"/>
+            <Carousel itemList={cardsComponentsList} width="620px" />
           </div>
         </Flex>
       </CentralizerContainer>
