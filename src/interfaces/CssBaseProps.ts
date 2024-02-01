@@ -26,4 +26,5 @@ export interface CssBaseProps {
   "overflow"?: CSSProperties["overflow"]
   "$text-align"?: CSSProperties["textAlign"]
   "$box-shadow"?: CSSProperties["boxShadow"]
+  "$color"?: CSSProperties["color"]
 }

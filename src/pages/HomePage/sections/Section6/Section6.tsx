@@ -24,6 +24,11 @@ const ImageCardContainer = styled.div`
   padding: 62px 74px;
   box-sizing: border-box;
 `;
+interface StarImgProps {
+  $left?: CSSProperties["left"];
+  $top?: CSSProperties["top"];
+  $right?: CSSProperties["right"];
+}
 
 const StarImg = styled.img<StarImgProps>`
   position: absolute;
@@ -82,12 +87,6 @@ const TextContainer = styled.div`
     }
   }
 `;
-
-interface StarImgProps {
-  $left?: CSSProperties["left"];
-  $top?: CSSProperties["top"];
-  $right?: CSSProperties["right"];
-}
 
 export const Section6 = () => {
   return (
