@@ -4,7 +4,7 @@ import { CentralizerContainer, Flex, Text } from "../../componentsStyles";
 import { config } from "../../config";
 import instagramIcon from "../../assets/icon-instagram.svg";
 import facebookIcon from "../../assets/icon-facebook.svg";
-import tikTokIcon from "../../assets/icon-tikTok.svg";
+import tiktokIcon from "../../assets/icon-tiktok.svg";
 
 const Row = styled.hr`
   width: 100%;
@@ -137,7 +137,7 @@ export const Footer = () => {
                   <img src={facebookIcon} alt="" />
                 </a>
                 <a href={config.socialMedia.ticktok}>
-                  <img src={tikTokIcon} alt="" />
+                  <img src={tiktokIcon} alt="" />
                 </a>
               </div>
             </SocialMediaContainer>
