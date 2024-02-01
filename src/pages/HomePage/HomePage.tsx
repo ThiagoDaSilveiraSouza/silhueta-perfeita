@@ -5,6 +5,7 @@ import {
   Depoiments,
   FirstBenefitsSection,
   FirstSection,
+  Section10,
   Section5,
   Section6,
   Section7,
@@ -23,6 +24,7 @@ export const HomePage = () => {
       <Section7 />
       <Section8 />
       <Section9 />
+      <Section10 />
     </PageContainer>
   );
 };

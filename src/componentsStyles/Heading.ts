@@ -49,6 +49,7 @@ export const Heading = styled.h2<HeadingProps>`
       box-sizing: ${props["$box-sizing"]};
       overflow: ${props["overflow"]};
       text-align: ${props["$text-align"]};
+      color: ${props["$color"]};
   `
   }}
   ${({ theme, as }) => createTitles[as as keyof typeof createTitles] ? createTitles[as as keyof typeof createTitles](theme) : createTitles.h2(theme)};
