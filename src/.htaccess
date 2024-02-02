@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  Header set Access-Control-Allow-Origin "*"
+  RewriteEngine On
+  RewriteBase /
+
+  # Certifique-se de que não reescreva arquivos reais ou diretórios existentes
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Redirecionar todas as solicitações para o index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
