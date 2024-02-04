@@ -6,9 +6,11 @@ import {
   MainButton,
   Text,
 } from "../../../../componentsStyles";
+import { useWindowSize } from "../../../../hooks";
 import { CardsContainer } from "./components";
 
 export const FirstBenefitsSection = () => {
+  const { isDesktop } = useWindowSize();
   return (
     <CentralizerContainer
       $align-items="center"
@@ -20,7 +22,7 @@ export const FirstBenefitsSection = () => {
           $flex-direction="column"
           $gap="64px"
           $align-items="center"
-          $padding="211px 0 0 0 "
+          $padding={isDesktop ? "211px 0 0 0 " : "99px 0 0 0"}
         >
           <Flex $flex-direction="column" $align-items="center" $gap="45px">
             <Heading $max-width="632px" $text-align="center">

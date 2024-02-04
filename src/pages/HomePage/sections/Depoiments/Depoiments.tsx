@@ -43,7 +43,7 @@ export const Depoiments = () => {
           <Flex $flex="0 1 50%">
             <FiniteCarousel
               itemList={currentItemList}
-              itemsToShow={width >= ResponsiveConfigs.viewWidth["1"] ? 3 : 1}
+              itemsToShow={width >= ResponsiveConfigs.viewWidth["desktop"] ? 3 : 1}
             />
           </Flex>
         </Flex>

@@ -1,4 +1,3 @@
-import React from "react";
 import { InView } from "react-intersection-observer";
 import styled from "styled-components";
 
@@ -22,7 +21,7 @@ export const LazzyAnimationContainer = ({
   ...props
 }: LazzyAnimationContainerProps) => {
   return (
-    <InView triggerOnce={true} threshold={0.5}>
+    <InView triggerOnce={true} threshold={0.25}>
       {({ inView, ref }) => (
         <LazzyContainer ref={ref} $isshow={inView.toString()} {...props}>
           {children}

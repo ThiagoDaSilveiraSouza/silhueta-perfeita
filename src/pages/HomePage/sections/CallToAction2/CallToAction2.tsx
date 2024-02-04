@@ -10,8 +10,10 @@ import {
 import { cardsList } from "./data";
 import { CarouselCard } from "./components";
 import { Carousel } from "../../../../components/Carousel";
+import { useWindowSize } from "../../../../hooks";
 
 export const CallToAction2 = () => {
+  const { isDesktop } = useWindowSize();
   const cardsComponentsList = cardsList.map((currentCardProps, index) => (
     <CarouselCard key={"carousel-card-" + index} {...currentCardProps} />
   ));
@@ -20,7 +22,7 @@ export const CallToAction2 = () => {
     <LazzyAnimationContainer>
       <CentralizerContainer $justify-content="center">
         <Flex
-          $padding="72px 0"
+          $padding={isDesktop ? "279px 0" : "72px 0"}
           $flex-wrap="wrap"
           $gap="56px"
           $max-width="100%"

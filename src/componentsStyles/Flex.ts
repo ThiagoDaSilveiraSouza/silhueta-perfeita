@@ -28,7 +28,9 @@ export const Flex = styled.div<CssBaseProps>`
       border-radius: ${props["$border-radius"]};
       box-sizing: ${props["$box-sizing"]};
       overflow: ${props["overflow"]};
-      box-shadow: ${props["$box-shadow"]}
+      box-shadow: ${props["$box-shadow"]};
+      text-align: ${props["$text-align"]};
+      border: ${props["$border"]};
     `
   }}
 `

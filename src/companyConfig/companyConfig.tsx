@@ -1,4 +1,4 @@
-export const config = {
+export const companyConfig = {
   name: "Silhueta Perfeita",
   cnpj: "00.000.000/0001-0",
   owner: "Pós Plástica",

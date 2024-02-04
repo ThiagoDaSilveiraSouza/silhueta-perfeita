@@ -5,6 +5,8 @@ interface TextProps extends CssBaseProps {
   theme: ThemeProps
   $textalign?: CSSProperties["textAlign"]
   $maxwidth?: CSSProperties["maxWidth"]
+  $texttransform?: CSSProperties["textTransform"]
+  $fontweight?: CSSProperties["fontWeight"]
 }
 
 export const Text = styled.p<TextProps>`
@@ -12,7 +14,8 @@ export const Text = styled.p<TextProps>`
   color: ${({ theme }) => theme.colors.bodyFontColor};
   font-family: ${({ theme }) => theme.fonts.body};
   font-style: normal;
-  font-weight: 400;
+  font-weight:${({ $fontweight }) => $fontweight || 400} ;
   text-align: ${({ $textalign }) => $textalign};
   max-width: ${({ $maxwidth }) => $maxwidth};
+  text-transform: ${({ $texttransform }) => $texttransform};
 `

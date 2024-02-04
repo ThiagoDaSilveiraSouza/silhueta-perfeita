@@ -1,17 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { ResponsiveConfigs } from "../configs/responsiveConfigs";
 
-export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
+const getWindowSizeData = () => {
+  const { viewWidth } = ResponsiveConfigs;
+  return {
     width: window.innerWidth,
     height: window.innerHeight,
-  });
-
-  const handleResize = () => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+    isDesktop: window.innerWidth >= viewWidth.desktop,
+    isTablet:
+      window.innerWidth < viewWidth.desktop &&
+      window.innerWidth >= viewWidth.tablet,
+    isMobile: window.innerWidth <= viewWidth.mobile,
   };
+};
+
+export const useWindowSize = () => {
+  const startWindowSize = getWindowSizeData();
+  const [windowSize, setWindowSize] = useState(startWindowSize);
+
+  const handleResize = useCallback(() => {
+    const currentWindowData = getWindowSizeData();
+    setWindowSize(currentWindowData);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -19,7 +29,7 @@ export const useWindowSize = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [handleResize]);
 
   return windowSize;
 };

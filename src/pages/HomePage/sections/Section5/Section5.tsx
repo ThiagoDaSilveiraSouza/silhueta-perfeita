@@ -84,7 +84,7 @@ export const Section5 = () => {
           <ImageContainer>
             <img src={WomanImageSection5} alt="woman" />
             <ImageOverlay />
-            {width >= ResponsiveConfigs.viewWidth["1"] && (
+            {width >= ResponsiveConfigs.viewWidth["desktop"] && (
               <CardsContainer>
                 {cardList.map((currentCard, index) => {
                   const { left, top } = cardListPositions[index];
@@ -101,7 +101,7 @@ export const Section5 = () => {
               </CardsContainer>
             )}
           </ImageContainer>
-          {width < ResponsiveConfigs.viewWidth["1"] && (
+          {width < ResponsiveConfigs.viewWidth["desktop"] && (
             <Carousel
               itemList={cardElementListToCarousel}
               width="280px"

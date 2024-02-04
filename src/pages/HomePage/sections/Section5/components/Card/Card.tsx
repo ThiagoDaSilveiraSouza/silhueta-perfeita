@@ -29,7 +29,7 @@ export const Card = ({ cardData, $position, $left, $top }: CardProps) => {
         $gap="12px"
         $border-radius="20px"
         $background="#FFF"
-        $box-shadow="0px 8px 27.8px 0px gray"
+        $box-shadow="0px 30px 28px -28px rgba(0,0,0,0.2)"
         width="262px"
         $max-width="262px"
         $position={$position || "initial"}

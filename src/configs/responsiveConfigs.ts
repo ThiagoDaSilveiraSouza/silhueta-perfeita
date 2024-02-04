@@ -1,7 +1,7 @@
 export const ResponsiveConfigs = {
   viewWidth: {
-    1: 1000,
-    2: 800,
-    3: 600,
+    desktop: 1374,
+    tablet: 1000,
+    mobile: 600,
   }
 }

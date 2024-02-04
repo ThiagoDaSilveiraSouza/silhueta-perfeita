@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { LazzyAnimationContainer } from "../../components/LazzyAnimationContainer";
 import { CentralizerContainer, Flex, Text } from "../../componentsStyles";
-import { config } from "../../config";
+import { companyConfig } from "../../companyConfig";
 import instagramIcon from "../../assets/icon-instagram.svg";
 import facebookIcon from "../../assets/icon-facebook.svg";
 import tiktokIcon from "../../assets/icon-tiktok.svg";
@@ -94,29 +94,29 @@ export const Footer = () => {
             <Row />
             <CompanyDataContainer>
               <ComponayInfoContainer>
-                <FooterTitle>{config.name}</FooterTitle>
+                <FooterTitle>{companyConfig.name}</FooterTitle>
                 <Text>
-                  ©{currentYear} {config.name} - CNPJ {config.cnpj} -{" "}
-                  {config.name} by {config.owner}
+                  ©{currentYear} {companyConfig.name} - CNPJ {companyConfig.cnpj} -{" "}
+                  {companyConfig.name} by {companyConfig.owner}
                 </Text>
               </ComponayInfoContainer>
               <ComponayInfoContainer>
                 <FooterTitle>Relacionamento</FooterTitle>
                 <div>
                   <FooterTitle>Contato</FooterTitle>
-                  <Text>{config.phone}</Text>
+                  <Text>{companyConfig.phone}</Text>
                 </div>
                 <div>
                   <FooterTitle>Horário de Atendimento</FooterTitle>
-                  <Text>{config.openinghours}</Text>
+                  <Text>{companyConfig.openinghours}</Text>
                 </div>
               </ComponayInfoContainer>
               <ComponayInfoContainer>
                 <FooterTitle>Endereço</FooterTitle>
                 <Text>
-                  {config.address} - {config.number} - {config.neighborhood},{" "}
-                  {config.city} - {config.uf} <br />
-                  {config.cep}
+                  {companyConfig.address} - {companyConfig.number} - {companyConfig.neighborhood},{" "}
+                  {companyConfig.city} - {companyConfig.uf} <br />
+                  {companyConfig.cep}
                 </Text>
               </ComponayInfoContainer>
               <ButtonContainer>
@@ -130,13 +130,13 @@ export const Footer = () => {
             <SocialMediaContainer>
               <FooterTitle>Siga a gente</FooterTitle>
               <div>
-                <a href={config.socialMedia.instagram}>
+                <a href={companyConfig.socialMedia.instagram}>
                   <img src={instagramIcon} alt="" />
                 </a>
-                <a href={config.socialMedia.facebook}>
+                <a href={companyConfig.socialMedia.facebook}>
                   <img src={facebookIcon} alt="" />
                 </a>
-                <a href={config.socialMedia.ticktok}>
+                <a href={companyConfig.socialMedia.ticktok}>
                   <img src={tiktokIcon} alt="" />
                 </a>
               </div>

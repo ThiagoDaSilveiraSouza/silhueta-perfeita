@@ -27,4 +27,5 @@ export interface CssBaseProps {
   "$text-align"?: CSSProperties["textAlign"]
   "$box-shadow"?: CSSProperties["boxShadow"]
   "$color"?: CSSProperties["color"]
+  "$border"?: CSSProperties["border"]
 }

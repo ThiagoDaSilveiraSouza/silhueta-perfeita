@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { CssBaseProps, ThemeProps } from "../interfaces";
+import { useWindowSize } from "../hooks";
 
 
 interface HeadingProps {
@@ -13,6 +14,10 @@ const createTitles = {
     font-family: ${theme.fonts.heading};
     font-size: ${theme.fonts.headingSize};
     line-height: 105.556%; /* 54.889px */
+
+    @media(max-width: 600px){
+      font-size: 2rem; 
+    }
   `,
   h3: (theme: ThemeProps) => css<HeadingProps>`
     color: ${theme.colors.bodyFontColor};
@@ -27,6 +32,7 @@ interface HeadingProps extends CssBaseProps {
 }
 export const Heading = styled.h2<HeadingProps>`
   ${(props) => {
+    const { isDesktop } = useWindowSize()
     return css`
       position: ${props["$position"]};
       flex: ${props["$flex"]};
@@ -48,7 +54,7 @@ export const Heading = styled.h2<HeadingProps>`
       border-radius: ${props["$border-radius"]};
       box-sizing: ${props["$box-sizing"]};
       overflow: ${props["overflow"]};
-      text-align: ${props["$text-align"]};
+      text-align: ${props["$text-align"] || isDesktop ? "start" : "center"};
       color: ${props["$color"]};
   `
   }}
@@ -56,4 +62,6 @@ export const Heading = styled.h2<HeadingProps>`
   b{
     font-weight: bolder;
   }
+
+
 `
