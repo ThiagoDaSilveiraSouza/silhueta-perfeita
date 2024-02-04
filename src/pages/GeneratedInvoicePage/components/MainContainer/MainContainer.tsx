@@ -14,7 +14,7 @@ export const MainContainer = () => {
     <LazzyAnimationContainer>
       <CentralizerContainer>
         <Flex $flex-direction="column" $align-items="center">
-          <Flex $flex-direction="column" gap="89px" $align-items="center">
+          <Flex $flex-direction="column" $gap="89px" $align-items="center">
             <img src={logoImg} alt="pedido-realizado-icon" />
             <img src={BarCodeIcon} alt="pedido-realizado-icon" />
           </Flex>
