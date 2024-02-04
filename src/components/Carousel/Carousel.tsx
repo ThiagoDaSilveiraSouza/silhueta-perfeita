@@ -1,7 +1,8 @@
 import { ReactNode, useCallback, useMemo, useState, useEffect } from "react";
 import styled, { CSSProperties } from "styled-components";
-import { ArrowCicle } from "../ArrowCircle";
 import { CssBaseProps } from "../../interfaces";
+import { Navigation } from "./components";
+import { useWindowSize } from "../../hooks";
 
 interface ComponentContainerProps {
   $gap: CSSProperties["gap"];
@@ -12,6 +13,10 @@ const ComponentContainer = styled.div<ComponentContainerProps>`
   display: flex;
   width: fit-content;
   flex-direction: column;
+  align-items: ${() => {
+    const { isDesktop } = useWindowSize();
+    return isDesktop ? "start" : "center";
+  }};
   gap: ${({ $gap }) => $gap};
   max-width: 100%;
   overflow: hidden;
@@ -48,23 +53,6 @@ const SlideItem = styled.div`
   object-fit: cover;
   box-sizing: border-box;
   scroll-snap-align: start;
-`;
-
-interface ButtonContainerProps {
-  $justifycontrols: CSSProperties["justifyContent"];
-}
-
-const ButtonContainer = styled.div<ButtonContainerProps>`
-  display: flex;
-  gap: 15px;
-  justify-content: ${({ $justifycontrols }) => $justifycontrols};
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 100%;
-  }
 `;
 
 interface CarouselProps {
@@ -184,14 +172,13 @@ export const Carousel = ({
           ))}
         </CarouselSlide>
       </CarouselContainer>
-      <ButtonContainer $justifycontrols={justifyControls}>
-        <button onClick={prevSlide}>
-          <ArrowCicle direction="left" />
-        </button>
-        <button onClick={nextSlide}>
-          <ArrowCicle />
-        </button>
-      </ButtonContainer>
+      <Navigation
+        justifyControls={justifyControls}
+        prevSlide={prevSlide}
+        nextSlide={nextSlide}
+        activeSlideIndex={currentSlideIndex}
+        totalOfSlides={updatedListItem.length}
+      />
     </ComponentContainer>
   );
 };

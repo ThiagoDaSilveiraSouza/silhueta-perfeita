@@ -33,11 +33,14 @@ export const CallToAction2 = () => {
             $gap="45px"
             $flex={"1 1 420px"}
             $padding="25px 0 0 0 "
+            $align-items={isDesktop ? "start" : "center"}
           >
             <Heading
               as="h2"
-              style={{ textAlign: "start", maxWidth: "570px" }}
-              width="100%"
+              style={{
+                textAlign: isDesktop ? "start" : "center",
+                maxWidth: "498px",
+              }}
             >
               Modele a <b>beleza</b> do seu corpo com a cinta{" "}
               <b>Silhueta Perfeita</b>
@@ -46,13 +49,17 @@ export const CallToAction2 = () => {
               Veja como a Silhueta Perfeita trabalha em harmonia com o seu corpo
               para criar curvas perfeitas.
             </Text>
-            <Flex style={{ gap: "15px" }}>
-              <MainButton>Quero o Corpo Perfeito</MainButton>
-            </Flex>
+            {isDesktop && <MainButton>Quero o Corpo Perfeito</MainButton>}
           </Flex>
-          <div>
-            <Carousel itemList={cardsComponentsList} width="620px" />
-          </div>
+          <Flex
+            $flex-direction="column"
+            $gap="42px"
+            $align-items="center"
+            $flex="0 1 570px"
+          >
+            <Carousel itemList={cardsComponentsList} width="570px" />
+            {!isDesktop && <MainButton>Quero o Corpo Perfeito</MainButton>}
+          </Flex>
         </Flex>
       </CentralizerContainer>
     </LazzyAnimationContainer>

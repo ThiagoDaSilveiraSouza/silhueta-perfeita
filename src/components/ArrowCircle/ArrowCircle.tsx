@@ -4,12 +4,14 @@ interface ArrowCircleProps {
   color?: CSSProperties["color"];
   backgroundColor?: CSSProperties["color"];
   direction?: "top" | "right" | "bottom" | "left";
+  size?: CSSProperties["width"];
 }
 
 export const ArrowCicle = ({
   color = "white",
   backgroundColor = "#323232",
   direction = "right",
+  size = "28px",
 }: ArrowCircleProps) => {
   const rotateByDirection: Record<
     NonNullable<ArrowCircleProps["direction"]>,
@@ -22,9 +24,9 @@ export const ArrowCicle = ({
   };
   return (
     <svg
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={{

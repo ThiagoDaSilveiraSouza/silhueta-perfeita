@@ -1,20 +1,14 @@
-import {
-  FiniteCarousel,
-  LazzyAnimationContainer,
-} from "../../../../components";
+import { Carousel, LazzyAnimationContainer } from "../../../../components";
 import {
   CentralizerContainer,
   Flex,
   Heading,
   Text,
 } from "../../../../componentsStyles";
-import { ResponsiveConfigs } from "../../../../configs/responsiveConfigs";
-import { useWindowSize } from "../../../../hooks";
 import { DepoimentsCard } from "./components/DepoimentsCard";
 import { depoimentsList } from "./data";
 
 export const Depoiments = () => {
-  const { width } = useWindowSize();
   const currentItemList = depoimentsList.map((currentCard, index) => (
     <DepoimentsCard cardInfo={currentCard} key={"card-info-" + index} />
   ));
@@ -41,10 +35,7 @@ export const Depoiments = () => {
             <Text>Transformações que falam mais que palavras.</Text>
           </Flex>
           <Flex $flex="0 1 50%">
-            <FiniteCarousel
-              itemList={currentItemList}
-              itemsToShow={width >= ResponsiveConfigs.viewWidth["desktop"] ? 3 : 1}
-            />
+            <Carousel itemList={currentItemList} />
           </Flex>
         </Flex>
       </CentralizerContainer>
