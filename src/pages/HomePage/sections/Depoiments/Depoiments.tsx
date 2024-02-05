@@ -5,10 +5,12 @@ import {
   Heading,
   Text,
 } from "../../../../componentsStyles";
+import { useWindowSize } from "../../../../hooks";
 import { DepoimentsCard } from "./components/DepoimentsCard";
 import { depoimentsList } from "./data";
 
 export const Depoiments = () => {
+  const { isDesktop } = useWindowSize();
   const currentItemList = depoimentsList.map((currentCard, index) => (
     <DepoimentsCard cardInfo={currentCard} key={"card-info-" + index} />
   ));
@@ -19,7 +21,7 @@ export const Depoiments = () => {
         <Flex
           $align-items="center"
           $flex="1 1 100%"
-          $padding="200px 0 0 0"
+          $padding={isDesktop ? "234px 0 0 0" : "119px 0 0 0"}
           $flex-direction="column"
           $gap="80px"
         >
@@ -35,7 +37,7 @@ export const Depoiments = () => {
             <Text>Transformações que falam mais que palavras.</Text>
           </Flex>
           <Flex $flex="0 1 50%">
-            <Carousel itemList={currentItemList} />
+            <Carousel itemList={currentItemList} width={"336px"} />
           </Flex>
         </Flex>
       </CentralizerContainer>

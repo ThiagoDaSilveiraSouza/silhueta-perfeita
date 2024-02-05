@@ -16,43 +16,30 @@ const cardList = [
   {
     title: "Fácil de Vestir",
     text: "Em poucos segundos você terá a Silhueta Perfeita.",
-  },
-  {
-    title: "Cintura Definida",
-    text: "Sinta o efeito imediato de uma cintura visivelmente mais fina.",
-  },
-  {
-    title: "Conforto Diário",
-    text: "Tenha uma Silhueta Perfeita com conforto durante todo o dia.",
-  },
-  {
-    title: "Confiança Renovada",
-    text: "A transformação física traz um novo nível de autoconfiança.",
-  },
-  {
-    title: "Melhora da Postura",
-    text: "Ajuda a manter a postura correta, contribuindo para a saúde da coluna.",
-  },
-];
-
-const cardListPositions = [
-  {
     left: "-45%",
     top: "5%",
   },
   {
+    title: "Cintura Definida",
+    text: "Sinta o efeito imediato de uma cintura visivelmente mais fina.",
     left: "-65%",
     top: "35%",
   },
   {
+    title: "Conforto Diário",
+    text: "Tenha uma Silhueta Perfeita com conforto durante todo o dia.",
     left: "-40%",
     top: "65%",
   },
   {
+    title: "Confiança Renovada",
+    text: "A transformação física traz um novo nível de autoconfiança.",
     left: "70%",
     top: "20%",
   },
   {
+    title: "Melhora da Postura",
+    text: "Ajuda a manter a postura correta, contribuindo para a saúde da coluna.",
     left: "65%",
     top: "65%",
   },
@@ -75,7 +62,7 @@ export const Section5 = () => {
           $position="relative"
         >
           <Flex $flex-direction="column" $align-items="center" $gap="45px">
-            <Heading>
+            <Heading $text-align={"center"}>
               Entregamos <b>mais do que estética</b>, uma jornada de{" "}
               <b>bem-estar e confiança!</b>
             </Heading>
@@ -87,14 +74,11 @@ export const Section5 = () => {
             {width >= ResponsiveConfigs.viewWidth["desktop"] && (
               <CardsContainer>
                 {cardList.map((currentCard, index) => {
-                  const { left, top } = cardListPositions[index];
                   return (
                     <Card
                       cardData={currentCard}
                       key={"section-5-card-" + index}
                       $position="absolute"
-                      $left={left}
-                      $top={top}
                     />
                   );
                 })}

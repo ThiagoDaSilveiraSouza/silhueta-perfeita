@@ -9,7 +9,6 @@ const NavigationContainer = styled.div<NavigationContainerProps>`
   display: flex;
   gap: 11px;
   justify-content: ${({ $justifycontrols }) => $justifycontrols};
-  height: 25px;
   button {
     display: flex;
     justify-content: center;

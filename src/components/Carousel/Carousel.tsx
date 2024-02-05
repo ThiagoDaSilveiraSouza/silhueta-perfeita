@@ -37,10 +37,17 @@ const CarouselContainer = styled.div<CarouselContainerProps>`
   scroll-snap-type: mandatory;
 `;
 
-const CarouselSlide = styled.div`
+interface CarouselSlideProps {
+  $translatex: number;
+  $transition: string;
+}
+
+const CarouselSlide = styled.div<CarouselSlideProps>`
   display: flex;
   width: 100%;
   height: fit-content;
+  transform: translateX(-${({ $translatex }) => $translatex}%);
+  transition: ${({ $transition }) => $transition};
 `;
 
 const SlideItem = styled.div`
@@ -85,7 +92,6 @@ export const Carousel = ({
     const isLastSlideIndex = currentSlideIndex === updatedListItem.length - 2;
 
     if (isLastSlideIndex) {
-      console.log("isLastSlideIndex", currentSlideIndex);
       setTransitionEnabled(false);
       setCurrentSlideIndex(0);
       setTimeout(() => {
@@ -111,7 +117,6 @@ export const Carousel = ({
     const isFirstSlideIndex = currentSlideIndex === 1;
 
     if (isFirstSlideIndex) {
-      console.log("isFirstSlideIndex", currentSlideIndex);
       setTransitionEnabled(false);
       setCurrentSlideIndex(updatedListItem.length - 1);
       setTimeout(() => {
@@ -133,25 +138,6 @@ export const Carousel = ({
   }, [updatedListItem, currentSlideIndex]);
 
   useEffect(() => {
-    const container = document.getElementById("carousel-container");
-    const handleTransitionEnd = () => {
-      if (container) {
-        container.style.transition = "transform 0.3s ease-in-out";
-      }
-    };
-
-    if (container) {
-      container.addEventListener("transitionend", handleTransitionEnd);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("transitionend", handleTransitionEnd);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     setCurrentIndex && setCurrentIndex(currentSlideIndex);
   }, [currentSlideIndex, setCurrentIndex]);
 
@@ -160,12 +146,10 @@ export const Carousel = ({
       style={{ position: "relative", flex: "1 1 auto" }}
       $gap={controlsGapDistance}
     >
-      <CarouselContainer id="carousel-container" width={width} height={height}>
+      <CarouselContainer width={width} height={height}>
         <CarouselSlide
-          style={{
-            transform: `translateX(-${currentSlideIndex * 100}%)`,
-            transition: transitionEnabled ? "0.6s" : "none",
-          }}
+          $translatex={currentSlideIndex * 100}
+          $transition={transitionEnabled ? "0.6s" : "none"}
         >
           {updatedListItem.map((currentItem, index) => (
             <SlideItem key={index + "carousel-item"}>{currentItem}</SlideItem>
