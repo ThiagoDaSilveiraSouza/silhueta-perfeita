@@ -36,14 +36,16 @@ export const Section9 = () => {
       <CentralizerContainer>
         <Flex
           $justify-content="center"
-          $margin={isDesktop?"259px 0 0 0":"120px 0 0 0"}
+          $margin={isDesktop ? "259px 0 0 0" : "120px 0 0 0"}
           $gap="65px"
           $flex-wrap="wrap"
           $flex-direction="column"
           $align-items="center"
         >
           <Flex $max-width="594px">
-            <Heading>Veja a facilidade de usar cinta Silhueta Perfeita</Heading>
+            <Heading $text-align="center">
+              Veja a facilidade de usar cinta Silhueta Perfeita
+            </Heading>
           </Flex>
           <StepCardContainer>
             {stepCardList.map((_, index) => {

@@ -10,6 +10,7 @@ import { ProdutcCard } from "./components";
 import ProductImg1 from "../../../../assets/section-11-strap-1.png";
 import ProductImg2 from "../../../../assets/section-11-strap-2.png";
 import ProductImg3 from "../../../../assets/section-11-strap-3.png";
+import { useWindowSize } from "../../../../hooks";
 
 const ProductsCardsContainer = styled.div`
   display: flex;
@@ -58,27 +59,35 @@ const productCardList = [
 ];
 
 export const Section11 = () => {
+  const { isDesktop } = useWindowSize();
   return (
     <LazzyAnimationContainer>
       <CentralizerContainer $justify-content="center">
         <Flex
-          $margin="190px 0 0 0 "
+          $margin={isDesktop ? "190px 0 0 0" : "93px 0 0 0"}
           $flex-direction="column"
           $align-items="center"
           $gap="58px"
           $position="relative"
         >
           <Flex $flex-direction="column" $align-items="center" $gap="29px">
-            <Heading $max-width="502px">
+            <Heading $max-width="502px" $text-align="center">
               Oferta imperdível, a beleza ao seu alcance
             </Heading>
             <Text>Viva a Transformação com a Silhueta Perfeita</Text>
           </Flex>
 
           <ProductsCardsContainer>
-            {productCardList.map((cardData, index) => (
-              <ProdutcCard cardData={cardData} key={"product-card-" + index} />
-            ))}
+            {productCardList.map((cardData, index) => {
+              const isBigger = index === 1 && isDesktop;
+              return (
+                <ProdutcCard
+                  cardData={cardData}
+                  key={"product-card-" + index}
+                  isBigger={isBigger}
+                />
+              );
+            })}
           </ProductsCardsContainer>
         </Flex>
       </CentralizerContainer>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { LazzyAnimationContainer } from "../../components/LazzyAnimationContainer";
 import { CentralizerContainer, Flex, Heading } from "../../componentsStyles";
 import { ThemeProps } from "../../interfaces";
+import { useWindowSize } from "../../hooks";
 
 interface FaqContainerPros {
   theme: ThemeProps;
@@ -81,12 +82,18 @@ const faqList = [
 ];
 
 export const Section13 = () => {
+  const { isDesktop } = useWindowSize();
+
   return (
     <LazzyAnimationContainer>
-      <Flex $justify-content="center" $flex="1 1 100%" $margin="220px 0 0 0">
+      <Flex
+        $justify-content="center"
+        $flex="1 1 100%"
+        $margin={isDesktop ? "268px 0 0 0" : "79px 0 0 0"}
+      >
         <CentralizerContainer>
           <Flex $flex-direction="column">
-            <Heading>Dúvidas frequentes</Heading>
+            <Heading $text-align="center">Dúvidas frequentes</Heading>
             <FaqContainer>
               {faqList.map((faqData, index) => {
                 const currentIndex = (index + 1).toString();

@@ -10,12 +10,14 @@ import logo from "../../../../assets/logo.png";
 import numberOneIcon from "../../../../assets/number-one-icon.svg";
 import PlayButton from "../../../../assets/Play Button.svg";
 import Banner1 from "../../../../assets/banner_1.png";
-import { Link } from "react-router-dom";
 import { LeftSide, RightSide } from "./style";
 import { useWindowSize } from "../../../../hooks";
+import { VideoModal } from "./components";
+import { useState } from "react";
 
 export const FirstSection = () => {
   const { width } = useWindowSize();
+  const [videoModalIsOpen, setVideoModalisOpen] = useState(false);
   const isDesktopSize = 1374 <= width;
 
   return (
@@ -40,7 +42,27 @@ export const FirstSection = () => {
             <b>Silhueta Perfeita</b>
           </Heading>
           {!isDesktopSize && (
-            <img src={Banner1} alt="banner 1" style={{ width: "225px" }} />
+            <div
+              style={{
+                display: "flex",
+                position: "relative",
+              }}
+            >
+              <img src={Banner1} alt="banner 1" style={{ width: "225px" }} />
+              <FloatElementContainer $bottom="-20px" $left="-10px" $zindex="1">
+                <img
+                  src={numberOneIcon}
+                  alt="number one icon"
+                  style={{
+                    backdropFilter: "blur(8px)",
+                    borderRadius: "100%",
+                    background: "rgba(224.19, 208.52, 175.61, 0.03)",
+                    width: "84px",
+                    height: "84px",
+                  }}
+                />
+              </FloatElementContainer>
+            </div>
           )}
 
           <Flex $max-width="409px">
@@ -55,13 +77,12 @@ export const FirstSection = () => {
             $justify-content={isDesktopSize ? "start" : "center"}
           >
             <MainButton>Quero o Corpo Perfeito</MainButton>
-            <Link to="vsl-desk" style={{ display: "flex" }}>
-              <img
-                src={PlayButton}
-                alt="play button"
-                style={{ maxWidth: "51px", height: "51px" }}
-              />
-            </Link>
+            <img
+              src={PlayButton}
+              alt="play button"
+              style={{ maxWidth: "51px", height: "51px" }}
+              onClick={() => setVideoModalisOpen(true)}
+            />
           </Flex>
         </LeftSide>
         <RightSide>
@@ -83,6 +104,18 @@ export const FirstSection = () => {
             </>
           )}
         </RightSide>
+        <VideoModal
+          useModal={[videoModalIsOpen, setVideoModalisOpen]}
+          modalCardPadding="0"
+        >
+          <iframe
+            width="672"
+            height="378"
+            src="https://www.youtube.com/embed/MczwQBm6c8E?si=IjJN32rHNF6_KDlK&amp;controls=0"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          />
+        </VideoModal>
       </Flex>
     </CentralizerContainer>
   );

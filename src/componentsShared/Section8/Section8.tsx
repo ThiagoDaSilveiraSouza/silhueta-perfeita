@@ -71,11 +71,8 @@ export const Section8 = () => {
           $gap="65px"
           $flex-wrap="wrap"
         >
-          <TextContainer>
-            <Heading
-              $text-align={isDesktop ? "start" : "center"}
-              width={isMobile ? "226px" : "auto"}
-            >
+          <TextContainer $text-align={isDesktop ? "start" : "center"}>
+            <Heading width={isMobile ? "226px" : "auto"}>
               Quem está usando aprova!
             </Heading>
             <Text>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Heading, Text } from "../../../../../../componentsStyles";
+import { useWindowSize } from "../../../../../../hooks";
 
 interface BenefitCardProps {
   cardData: {
@@ -7,18 +8,22 @@ interface BenefitCardProps {
     subtitle: string;
     text: string;
   };
-  translate: number;
+  translate?: number;
 }
 
 interface BenefitCardContainerProps {
-  $translate: number;
+  $translate?: number;
 }
 
 const BenefitCardContainer = styled.div<BenefitCardContainerProps>`
   display: flex;
   width: 306.834px;
-  /* min-height: 352px; */
-  padding: 40px 50px 40px 20px;
+  padding: ${({ $translate }) =>
+    $translate ? "40px 50px 40px 20px" : "40px 40px 40px 20px"};
+  margin: ${() => {
+    const {isDesktop} = useWindowSize()
+    return !isDesktop ? "30px" : "0";
+  }};
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
@@ -26,13 +31,15 @@ const BenefitCardContainer = styled.div<BenefitCardContainerProps>`
   background: #fff;
   box-shadow: 0px 8px 27.8px 0px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
-  transform: ${({ $translate }) => `translateX(-${$translate}%)`};
+  transform: ${({ $translate }) => $translate && `translateX(-${$translate}%)`};
 `;
 
 export const BenefitCard = ({ cardData, translate }: BenefitCardProps) => {
   return (
     <BenefitCardContainer $translate={translate}>
-      <Heading style={{ color: "#E0D1B0" }}>{cardData.title}</Heading>
+      <Heading style={{ color: "#E0D1B0" }} $text-align="center">
+        {cardData.title}
+      </Heading>
       <Heading as="h3">
         <b>{cardData.subtitle}</b>
       </Heading>

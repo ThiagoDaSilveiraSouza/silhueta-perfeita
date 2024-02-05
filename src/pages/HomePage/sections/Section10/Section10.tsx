@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LazzyAnimationContainer } from "../../../../components";
+import { Carousel, LazzyAnimationContainer } from "../../../../components";
 import {
   CentralizerContainer,
   Flex,
@@ -8,6 +8,7 @@ import {
   Text,
 } from "../../../../componentsStyles";
 import { BenefitCard } from "./components";
+import { useWindowSize } from "../../../../hooks";
 
 const CardsContainer = styled.div`
   display: flex;
@@ -33,12 +34,17 @@ const benefitsCardsList = [
 ];
 
 export const Section10 = () => {
+  const { isDesktop } = useWindowSize();
+  const CarouselCardList = benefitsCardsList.map((cardData, index) => {
+    return <BenefitCard cardData={cardData} key={"benefit-card-" + index} />;
+  });
+
   return (
     <LazzyAnimationContainer>
       <CentralizerContainer>
         <Flex
           $justify-content="center"
-          $margin="259px 0 0 0"
+          $margin={isDesktop?"259px 0 0 0":"99px 0 0 0"}
           $gap="65px"
           $flex-wrap="wrap"
           $flex-direction="column"
@@ -49,6 +55,7 @@ export const Section10 = () => {
             $flex-direction="column"
             $align-items="center"
             $gap="45px"
+            $text-align="center"
           >
             <Heading>
               Por que a Silhueta Perfeita se destaca das outras cintas?
@@ -58,19 +65,24 @@ export const Section10 = () => {
               entrega eficácia e conforto incomparáveis.
             </Text>
           </Flex>
-          <CardsContainer>
-            {benefitsCardsList.map((cardData, index) => {
-              const translateParcente = index * 7;
+          {isDesktop ? (
+            <CardsContainer>
+              {benefitsCardsList.map((cardData, index) => {
+                const translateParcente = index * 7;
 
-              return (
-                <BenefitCard
-                  cardData={cardData}
-                  key={"benefit-card-" + index}
-                  translate={translateParcente}
-                />
-              );
-            })}
-          </CardsContainer>
+                return (
+                  <BenefitCard
+                    cardData={cardData}
+                    key={"benefit-card-" + index}
+                    translate={translateParcente}
+                  />
+                );
+              })}
+            </CardsContainer>
+          ) : (
+            <Carousel itemList={CarouselCardList} width="310px" />
+          )}
+
           <MainButton>Quero o corpo dos sonhos</MainButton>
         </Flex>
       </CentralizerContainer>

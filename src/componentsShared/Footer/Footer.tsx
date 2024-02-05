@@ -5,6 +5,7 @@ import { companyConfig } from "../../companyConfig";
 import instagramIcon from "../../assets/icon-instagram.svg";
 import facebookIcon from "../../assets/icon-facebook.svg";
 import tiktokIcon from "../../assets/icon-tiktok.svg";
+import { useWindowSize } from "../../hooks";
 
 const Row = styled.hr`
   width: 100%;
@@ -85,10 +86,11 @@ const TextContainerm = styled.div`
 `;
 
 export const Footer = () => {
+  const { isDesktop } = useWindowSize();
   const currentYear = new Date().getFullYear();
   return (
     <LazzyAnimationContainer>
-      <Flex $justify-content="center" $flex="1 1 100%" $margin="220px 0 0 0">
+      <Flex $justify-content="center" $flex="1 1 100%" $margin={isDesktop?"220px 0 0 0":"100px 0 0 0"}>
         <CentralizerContainer>
           <Flex $flex-direction="column" $gap="27px">
             <Row />
@@ -96,8 +98,9 @@ export const Footer = () => {
               <ComponayInfoContainer>
                 <FooterTitle>{companyConfig.name}</FooterTitle>
                 <Text>
-                  ©{currentYear} {companyConfig.name} - CNPJ {companyConfig.cnpj} -{" "}
-                  {companyConfig.name} by {companyConfig.owner}
+                  ©{currentYear} {companyConfig.name} - CNPJ{" "}
+                  {companyConfig.cnpj} - {companyConfig.name} by{" "}
+                  {companyConfig.owner}
                 </Text>
               </ComponayInfoContainer>
               <ComponayInfoContainer>
@@ -114,8 +117,9 @@ export const Footer = () => {
               <ComponayInfoContainer>
                 <FooterTitle>Endereço</FooterTitle>
                 <Text>
-                  {companyConfig.address} - {companyConfig.number} - {companyConfig.neighborhood},{" "}
-                  {companyConfig.city} - {companyConfig.uf} <br />
+                  {companyConfig.address} - {companyConfig.number} -{" "}
+                  {companyConfig.neighborhood}, {companyConfig.city} -{" "}
+                  {companyConfig.uf} <br />
                   {companyConfig.cep}
                 </Text>
               </ComponayInfoContainer>

@@ -11,6 +11,7 @@ const ProdutcCardElement = styled.div`
 
 interface ProductCardContainer {
   theme: ThemeProps;
+  $isbigger: string;
 }
 
 const ProductCardContainer = styled.div<ProductCardContainer>`
@@ -28,9 +29,8 @@ const ProductCardContainer = styled.div<ProductCardContainer>`
   transition: 0.3s;
   user-select: none;
 
-  &:hover {
-    transform: scale(1.05);
-  }
+  transform: ${({ $isbigger = "false" }) =>
+    $isbigger === "true" && "scale(1.05)"};
 `;
 
 interface CardNameProps {
@@ -118,8 +118,12 @@ interface ProductCardProps {
     nameColor: string;
     nameBackgroundColor: string;
   };
+  isBigger?: boolean;
 }
-export const ProdutcCard = ({ cardData }: ProductCardProps) => {
+export const ProdutcCard = ({
+  cardData,
+  isBigger = false,
+}: ProductCardProps) => {
   const parcelValue = cardData.value / cardData.parcels;
   const valueInReal = cardData.value.toLocaleString("pt-BR", {
     style: "currency",
@@ -139,7 +143,7 @@ export const ProdutcCard = ({ cardData }: ProductCardProps) => {
   };
   return (
     <ProdutcCardElement>
-      <ProductCardContainer>
+      <ProductCardContainer $isbigger={isBigger.toString()}>
         <CardName
           $color={cardData.nameColor}
           $background={cardData.nameBackgroundColor}

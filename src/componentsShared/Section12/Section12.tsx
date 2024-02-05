@@ -7,6 +7,7 @@ import {
   Text,
 } from "../../componentsStyles";
 import SectionImage from "../../assets/section-12-img.png";
+import { useWindowSize } from "../../hooks";
 
 const ImageCardContainer = styled.div`
   position: relative;
@@ -16,9 +17,15 @@ const ImageCardContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  border-radius: 45px;
+  border-radius: ${() => {
+    const { isDesktop } = useWindowSize();
+    return !isDesktop ? "0" : "45px";
+  }};
   background: linear-gradient(159deg, #e0d1b0 16.01%, #bdaa80 114.69%);
-  margin-top: 220px;
+  margin-top: ${() => {
+    const { isDesktop } = useWindowSize();
+    return !isDesktop ? "79px" : "220px";
+  }};
   padding: 60px 60px;
   box-sizing: border-box;
 `;
