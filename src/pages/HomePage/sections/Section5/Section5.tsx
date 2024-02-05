@@ -61,7 +61,7 @@ export const Section5 = () => {
           $position="relative"
         >
           <Flex $flex-direction="column" $align-items="center" $gap="45px">
-            <Heading $text-align={"center"} width={"992px"}>
+            <Heading $text-align={"center"} $max-width={"992px"}>
               Entregamos <b>mais do que estética</b>, uma jornada de{" "}
               <b>bem-estar e confiança!</b>
             </Heading>
