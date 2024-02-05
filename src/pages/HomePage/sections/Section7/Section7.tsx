@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LazzyAnimationContainer } from "../../../../components";
+import { Carousel, LazzyAnimationContainer } from "../../../../components";
 import {
   CentralizerContainer,
   Flex,
@@ -11,6 +11,7 @@ import {
 import beforeImage from "../../../../assets/section7-before.png";
 import afterImage from "../../../../assets/section7-after.png";
 import { BeforeAndAfterCard } from "./components";
+import { useWindowSize } from "../../../../hooks";
 
 const TitleContainer = styled.div`
   display: flex;
@@ -49,6 +50,15 @@ const beforeAndAfterList = [
 ];
 
 export const Section7 = () => {
+  const { isDesktop } = useWindowSize();
+  const cardsComponentsList = beforeAndAfterList.map(
+    (currentCardProps, index) => (
+      <BeforeAndAfterCard
+        cardData={currentCardProps}
+        key={"before-and-after-" + index}
+      />
+    )
+  );
   return (
     <LazzyAnimationContainer>
       <CentralizerContainer>
@@ -65,16 +75,20 @@ export const Section7 = () => {
               Perfeita
             </Text>
           </TitleContainer>
-          <CardsContainer>
-            {beforeAndAfterList.map((currentData, index) => {
-              return (
-                <BeforeAndAfterCard
-                  cardData={currentData}
-                  key={"before-and-after-" + index}
-                />
-              );
-            })}
-          </CardsContainer>
+          {isDesktop ? (
+            <CardsContainer>
+              {beforeAndAfterList.map((currentData, index) => {
+                return (
+                  <BeforeAndAfterCard
+                    cardData={currentData}
+                    key={"before-and-after-" + index}
+                  />
+                );
+              })}
+            </CardsContainer>
+          ) : (
+            <Carousel itemList={cardsComponentsList} width={"315px"} />
+          )}
           <MainButton>Quero o corpo dos sonhos</MainButton>
         </Flex>
       </CentralizerContainer>

@@ -10,7 +10,6 @@ import WomanImageSection5 from "../../../../assets/woman-section5.png";
 import { Card } from "./components";
 import { CardsContainer, ImageContainer, ImageOverlay } from "./style";
 import { useWindowSize } from "../../../../hooks";
-import { ResponsiveConfigs } from "../../../../configs/responsiveConfigs";
 
 const cardList = [
   {
@@ -46,7 +45,7 @@ const cardList = [
 ];
 
 export const Section5 = () => {
-  const { width } = useWindowSize();
+  const { isDesktop } = useWindowSize();
   const cardElementListToCarousel = cardList.map((currentCard, index) => (
     <Card cardData={currentCard} key={"section-5-carousel-card-" + index} />
   ));
@@ -68,10 +67,19 @@ export const Section5 = () => {
             </Heading>
             <Text>Viva a Transformação com a Silhueta Perfeita</Text>
           </Flex>
-          <ImageContainer>
-            <img src={WomanImageSection5} alt="woman" />
-            <ImageOverlay />
-            {width >= ResponsiveConfigs.viewWidth["desktop"] && (
+          <ImageContainer $height={isDesktop ? "auto" : "257px"}>
+            <img
+              src={WomanImageSection5}
+              alt="woman"
+              style={{
+                width: isDesktop ? "429px" : "236px",
+                position: isDesktop ? "unset" : "absolute",
+                top: "3%",
+              }}
+            />
+            {isDesktop && <ImageOverlay />}
+
+            {isDesktop && (
               <CardsContainer>
                 {cardList.map((currentCard, index) => {
                   return (
@@ -85,7 +93,7 @@ export const Section5 = () => {
               </CardsContainer>
             )}
           </ImageContainer>
-          {width < ResponsiveConfigs.viewWidth["desktop"] && (
+          {!isDesktop && (
             <Carousel
               itemList={cardElementListToCarousel}
               width="280px"

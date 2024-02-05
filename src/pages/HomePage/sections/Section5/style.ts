@@ -1,12 +1,19 @@
-import styled from "styled-components";
+import styled, { CSSProperties } from "styled-components";
 
-export const ImageContainer = styled.div`
+interface ImageContainerProps {
+  $height: CSSProperties['height']
+}
+
+export const ImageContainer = styled.div<ImageContainerProps>`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: ${({ $height }) => $height || "auto"};
   > img {
     position: relative;
     display: flex;
-    width: 100%; /* ou o tamanho desejado */
-    height: auto; /* para manter a proporção da imagem */
+    width: 100%; 
     display: block;
     &::before {
       content: "";
@@ -17,7 +24,7 @@ export const ImageContainer = styled.div`
       height: 100%;
       background: lightgray url(WomanImageSection5) 7.966px 0px / 98.189%
         106.395% no-repeat;
-      opacity: 0.5; /* Ajuste conforme necessário para controlar a opacidade do overlay */
+      opacity: 0.5;
       z-index: 10;
     }
   }

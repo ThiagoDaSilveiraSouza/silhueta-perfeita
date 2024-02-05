@@ -10,17 +10,23 @@ import StrapImg from "../../../../assets/section-6-strap.png";
 import Start1Img from "../../../../assets/section-6-star-1.svg";
 import Start2Img from "../../../../assets/section-6-star-2.svg";
 import Start3Img from "../../../../assets/section-6-star-3.svg";
+import { useWindowSize } from "../../../../hooks";
 
-const ImageCardContainer = styled.div`
+interface ImageCardContainerProps {
+  $margintop: CSSProperties["marginTop"];
+  $borderradius: CSSProperties["borderRadius"];
+}
+
+const ImageCardContainer = styled.div<ImageCardContainerProps>`
   position: relative;
   flex: 0 1 1024px;
   min-height: 514px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border-radius: 45px;
+  border-radius: ${({ $borderradius }) => $borderradius};
   background: linear-gradient(159deg, #e0d1b0 16.01%, #bdaa80 114.69%);
-  margin-top: 220px;
+  margin-top: ${({ $margintop }) => $margintop};
   padding: 62px 74px;
   box-sizing: border-box;
 `;
@@ -89,10 +95,14 @@ const TextContainer = styled.div`
 `;
 
 export const Section6 = () => {
+  const { isDesktop } = useWindowSize();
   return (
     <LazzyAnimationContainer>
       <Flex $justify-content="center">
-        <ImageCardContainer>
+        <ImageCardContainer
+          $margintop={isDesktop ? "281px" : "61px"}
+          $borderradius={isDesktop ? "45px" : "0"}
+        >
           <CentralizerContainer
             style={{ display: "flex", justifyContent: "center" }}
           >
