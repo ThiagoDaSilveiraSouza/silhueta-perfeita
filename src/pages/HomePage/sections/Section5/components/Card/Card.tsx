@@ -33,7 +33,7 @@ export const Card = ({ cardData, $position }: CardProps) => {
         $border-radius="20px"
         $background="#FFF"
         $box-shadow="0px 30px 28px -28px rgba(0,0,0,0.2)"
-        width={isDesktop ? "262px" : "295px"}
+        // $width={isDesktop ? "262px" : "295px"}
         $max-width={isDesktop ? "262px" : "295px"}
         $position={$position || "initial"}
         $left={left || "initial"}

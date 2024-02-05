@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { useWindowSize } from "../../../../../../hooks";
 
 const StepCardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 225px;
-  height: 400px;
+  height: ${() => {
+    const { isDesktop } = useWindowSize();
+    return isDesktop ? "400px" : "225px";
+  }};
   flex-shrink: 0;
   border-radius: 20px;
   background: #c4c4c4;

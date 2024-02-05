@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LazzyAnimationContainer } from "../../components";
+import { Carousel, LazzyAnimationContainer } from "../../components";
 import {
   CentralizerContainer,
   Flex,
@@ -9,6 +9,7 @@ import {
 } from "../../componentsStyles";
 import VideoImg from "../../assets/section-8-video.png";
 import { VideoCard } from "./Components";
+import { useWindowSize } from "../../hooks";
 
 const TextContainer = styled.div`
   flex: 0 1 370px;
@@ -54,33 +55,43 @@ const VideosList = [
 ];
 
 export const Section8 = () => {
+  const { isDesktop, isMobile } = useWindowSize();
+  const VideoCardList = VideosList.map((videoData, index) => {
+    return (
+      <VideoCard videoData={videoData} key={"section-8-video-card-" + index} />
+    );
+  });
+
   return (
     <LazzyAnimationContainer>
       <CentralizerContainer>
         <Flex
           $justify-content="center"
-          $margin="244px 0 0 0"
+          $margin={isDesktop ? "244px 0 0 0" : "84px 0 0 0"}
           $gap="65px"
           $flex-wrap="wrap"
         >
           <TextContainer>
-            <Heading>Quem está usando aprova!</Heading>
+            <Heading
+              $text-align={isDesktop ? "start" : "center"}
+              width={isMobile ? "226px" : "auto"}
+            >
+              Quem está usando aprova!
+            </Heading>
             <Text>
               Veja alguns depoimentos de quem já usa a cinta modeladora Silhueta
               Perfeita!
             </Text>
-            <MainButton>Quero o corpo dos sonhos</MainButton>
+            {!isMobile && <MainButton>Quero o corpo dos sonhos</MainButton>}
           </TextContainer>
           <VideosContainer>
-            {VideosList.map((videoData, index) => {
-              return (
-                <VideoCard
-                  videoData={videoData}
-                  key={"section-8-video-card-" + index}
-                />
-              );
-            })}
+            {isMobile ? (
+              <Carousel itemList={VideoCardList} width={"225px"} />
+            ) : (
+              VideoCardList
+            )}
           </VideosContainer>
+          {isMobile ? <MainButton>Quero o corpo dos sonhos</MainButton> : ""}
         </Flex>
       </CentralizerContainer>
     </LazzyAnimationContainer>

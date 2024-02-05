@@ -6,10 +6,12 @@ import {
   Heading,
 } from "../../../../componentsStyles";
 import { StepCard } from "./components";
+import { useWindowSize } from "../../../../hooks";
 
 const StepCardContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 25px;
   flex-wrap: wrap;
 `;
@@ -27,12 +29,14 @@ const stepCardList = [
 ];
 
 export const Section9 = () => {
+  const { isDesktop } = useWindowSize();
+
   return (
     <LazzyAnimationContainer>
       <CentralizerContainer>
         <Flex
           $justify-content="center"
-          $margin="259px 0 0 0"
+          $margin={isDesktop?"259px 0 0 0":"120px 0 0 0"}
           $gap="65px"
           $flex-wrap="wrap"
           $flex-direction="column"

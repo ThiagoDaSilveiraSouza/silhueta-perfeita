@@ -29,10 +29,6 @@ const VideoCardContainer = styled.a<VideoCardContaiProps>`
   }
 `;
 
-const BackgroundImage = styled.img`
-  width: 100%;
-  object-fit: contain;
-`;
 const IconImage = styled.img`
   position: absolute;
 `;
@@ -44,10 +40,13 @@ export const VideoCard = ({ videoData }: VideoCardProps) => {
       target="_blank"
       $backgroundimage={videoData.imgUrl}
     >
-      <BackgroundImage
-        src={videoData.imgUrl}
-        alt={"section-8-video-card-" + videoData.videoUrl}
-      />
+      <iframe
+        width="225"
+        height="400"
+        src="https://www.youtube.com/embed/rqUXZEwDT4A"
+        title="Como melhorar seu código React? #shorts"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
       <IconImage src={PlayIcon} alt="play-icon" />
     </VideoCardContainer>
   );

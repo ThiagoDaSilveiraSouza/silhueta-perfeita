@@ -65,7 +65,7 @@ export const Section7 = () => {
         <Flex
           $align-items="center"
           $flex-direction="column"
-          $margin="178px 0 0 0"
+          $margin={isDesktop ? "178px 0 0 0" : "84px 0 0 0"}
           $gap="55px"
         >
           <TitleContainer>
