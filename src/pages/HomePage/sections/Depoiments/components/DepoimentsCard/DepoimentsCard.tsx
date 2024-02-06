@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Flex } from "../../../../../../componentsStyles";
+import { Flex, Text } from "../../../../../../componentsStyles";
 
 const DepoimentsCardContainer = styled.div`
   display: flex;
@@ -10,6 +10,7 @@ const DepoimentsCardContainer = styled.div`
   border-radius: 20px;
   background: #f7f3eb;
   box-sizing: border-box;
+  margin: 0 10px;
 
   h3 {
     color: #7c7c7c;
@@ -41,14 +42,18 @@ interface DepoimentsCardProps {
 export const DepoimentsCard = ({ cardInfo }: DepoimentsCardProps) => {
   return (
     <DepoimentsCardContainer $flex-direction="column">
-      <header>
-        <img src={cardInfo.imgUrl} alt={cardInfo.name} />
+      <header style={{ display: "flex", alignItems: "center", gap: "19px" }}>
+        <img
+          src={cardInfo.imgUrl}
+          alt={cardInfo.name}
+          style={{ width: "66px" }}
+        />
         <Flex $flex-direction="column">
           <h3>{cardInfo.name}</h3>
           <h4>{cardInfo.description}</h4>
         </Flex>
       </header>
-      <p>{cardInfo.text}</p>
+      <Text>{cardInfo.text}</Text>
     </DepoimentsCardContainer>
   );
 };
