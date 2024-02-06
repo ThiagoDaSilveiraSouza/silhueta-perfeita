@@ -9,7 +9,7 @@ const Squad = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -40px;
+  top: -23px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,7 @@ export const Card = ({ title, text, imgUrl }: CardProps) => {
       $flex="0 1 279px"
       $flex-direction="column"
       $align-items="center"
-      $padding="120px 17px 25px"
+      $padding="83px 17px 25px"
       $background="rgba(224, 209, 176, 0.1)"
       $border-radius="25px"
       $margin="45px 0 0 0"

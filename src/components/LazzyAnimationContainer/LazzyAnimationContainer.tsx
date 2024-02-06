@@ -1,5 +1,6 @@
 import { InView } from "react-intersection-observer";
 import styled from "styled-components";
+import { useWindowSize } from "../../hooks";
 
 interface LazzyContainerProps {
   $isshow: string;
@@ -20,8 +21,9 @@ export const LazzyAnimationContainer = ({
   children,
   ...props
 }: LazzyAnimationContainerProps) => {
+  const { isMobile } = useWindowSize();
   return (
-    <InView triggerOnce={true} threshold={0.25}>
+    <InView triggerOnce={true} threshold={isMobile ? 0.05 : 0.25}>
       {({ inView, ref }) => (
         <LazzyContainer ref={ref} $isshow={inView.toString()} {...props}>
           {children}
