@@ -6,6 +6,7 @@ import instagramIcon from "../../assets/icon-instagram.svg";
 import facebookIcon from "../../assets/icon-facebook.svg";
 import tiktokIcon from "../../assets/icon-tiktok.svg";
 import { useWindowSize } from "../../hooks";
+import { ThemeProps } from "../../interfaces";
 
 const Row = styled.hr`
   width: 100%;
@@ -48,6 +49,7 @@ const ButtonContainer = styled.div`
 
 interface ComponentLinkButtonProps {
   $type?: "dark" | "light";
+  theme: ThemeProps;
 }
 
 const ComponentLinkButton = styled.a<ComponentLinkButtonProps>`
@@ -61,6 +63,7 @@ const ComponentLinkButton = styled.a<ComponentLinkButtonProps>`
   color: ${({ $type = "light" }) => ($type === "dark" ? "white" : "#323232")};
   background: ${({ $type = "light" }) =>
     $type === "dark" ? "#323232" : "white"};
+  font-family: ${({ theme }) => theme.fonts.body};
 
   border-radius: 50px;
   border: 2px solid #323232;
@@ -90,7 +93,11 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <LazzyAnimationContainer>
-      <Flex $justify-content="center" $flex="1 1 100%" $margin={isDesktop?"220px 0 0 0":"100px 0 0 0"}>
+      <Flex
+        $justify-content="center"
+        $flex="1 1 100%"
+        $margin={isDesktop ? "220px 0 0 0" : "100px 0 0 0"}
+      >
         <CentralizerContainer>
           <Flex $flex-direction="column" $gap="27px">
             <Row />
