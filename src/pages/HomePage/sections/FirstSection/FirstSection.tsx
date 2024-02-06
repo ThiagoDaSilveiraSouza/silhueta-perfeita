@@ -16,7 +16,7 @@ import { VideoModal } from "./components";
 import { useState } from "react";
 
 export const FirstSection = () => {
-  const { width } = useWindowSize();
+  const { width, isDesktop } = useWindowSize();
   const [videoModalIsOpen, setVideoModalisOpen] = useState(false);
   const isDesktopSize = 1374 <= width;
 
@@ -25,45 +25,55 @@ export const FirstSection = () => {
       <Flex
         $padding={"72 0"}
         $flex-wrap="wrap"
-        $gap="56px"
+        $gap={"56px"}
         $justify-content="center"
       >
         <LeftSide $alignitems={isDesktopSize ? "start" : "center"}>
-          <img src={logo} />
-          <Heading
-            as="h2"
-            style={{
-              maxWidth: "410px",
-              justifyContent: "start",
-              textAlign: isDesktopSize ? "start" : "center",
-            }}
+          <img src={logo} style={{ width: isDesktop ? "220px" : "130px" }} />
+          <Flex
+            $flex-direction="column"
+            $align-items={isDesktop ? "start" : "center"}
           >
-            Tenha <b>o corpo dos sonhos</b> com a cinta modeladora{" "}
-            <b>Silhueta Perfeita</b>
-          </Heading>
-          {!isDesktopSize && (
-            <div
+            <Heading
+              as="h2"
               style={{
-                display: "flex",
-                position: "relative",
+                maxWidth: "410px",
+                justifyContent: "start",
+                textAlign: isDesktopSize ? "start" : "center",
+                flex: "1 1 100%",
               }}
             >
-              <img src={Banner1} alt="banner 1" style={{ width: "225px" }} />
-              <FloatElementContainer $bottom="-20px" $left="-10px" $zindex="1">
-                <img
-                  src={numberOneIcon}
-                  alt="number one icon"
-                  style={{
-                    backdropFilter: "blur(8px)",
-                    borderRadius: "100%",
-                    background: "rgba(224.19, 208.52, 175.61, 0.03)",
-                    width: "84px",
-                    height: "84px",
-                  }}
-                />
-              </FloatElementContainer>
-            </div>
-          )}
+              Tenha <b>o corpo dos sonhos</b> com a cinta modeladora{" "}
+              <b>Silhueta Perfeita</b>
+            </Heading>
+            {!isDesktopSize && (
+              <div
+                style={{
+                  display: "flex",
+                  position: "relative",
+                }}
+              >
+                <img src={Banner1} alt="banner 1" style={{ width: "225px" }} />
+                <FloatElementContainer
+                  $bottom="-20px"
+                  $left="-10px"
+                  $zindex="1"
+                >
+                  <img
+                    src={numberOneIcon}
+                    alt="number one icon"
+                    style={{
+                      backdropFilter: "blur(8px)",
+                      borderRadius: "100%",
+                      background: "rgba(224.19, 208.52, 175.61, 0.03)",
+                      width: "84px",
+                      height: "84px",
+                    }}
+                  />
+                </FloatElementContainer>
+              </div>
+            )}
+          </Flex>
 
           <Flex $max-width="409px">
             <Text $textalign={isDesktopSize ? "start" : "center"}>
@@ -85,25 +95,23 @@ export const FirstSection = () => {
             />
           </Flex>
         </LeftSide>
-        <RightSide>
-          {isDesktopSize && (
-            <>
-              <img src={Banner1} alt="banner 1" />
+        {isDesktopSize && (
+          <RightSide>
+            <img src={Banner1} alt="banner 1" />
 
-              <FloatElementContainer $bottom="-48px" $left="-13px" $zindex="1">
-                <img
-                  src={numberOneIcon}
-                  alt="number one icon"
-                  style={{
-                    backdropFilter: "blur(8px)",
-                    borderRadius: "100%",
-                    background: "rgba(224.19, 208.52, 175.61, 0.03)",
-                  }}
-                />
-              </FloatElementContainer>
-            </>
-          )}
-        </RightSide>
+            <FloatElementContainer $bottom="-48px" $left="-13px" $zindex="1">
+              <img
+                src={numberOneIcon}
+                alt="number one icon"
+                style={{
+                  backdropFilter: "blur(8px)",
+                  borderRadius: "100%",
+                  background: "rgba(224.19, 208.52, 175.61, 0.03)",
+                }}
+              />
+            </FloatElementContainer>
+          </RightSide>
+        )}
         <VideoModal
           useModal={[videoModalIsOpen, setVideoModalisOpen]}
           modalCardPadding="0"

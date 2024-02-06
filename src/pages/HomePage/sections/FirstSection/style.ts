@@ -1,4 +1,5 @@
 import styled, { CSSProperties } from "styled-components";
+import { useWindowSize } from "../../../../hooks";
 
 
 interface LeftSideProps {
@@ -12,11 +13,15 @@ export const LeftSide = styled.div<LeftSideProps>`
   flex-direction: column;
   align-items: ${({ $alignitems = "start" }) => $alignitems};
   justify-content: ${({ $justifycontent = "start" }) => $justifycontent};
-  gap: 45px;
+  gap: ${() => {
+    const { isDesktop } = useWindowSize()
+    return isDesktop ? "45px" : "24px"
+  }};
   img {
     width: 220px;
   }
 `;
+
 
 export const RightSide = styled.div`
   position: relative;
