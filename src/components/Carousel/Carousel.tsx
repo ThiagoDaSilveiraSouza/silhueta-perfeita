@@ -45,7 +45,6 @@ interface CarouselSlideProps {
 const CarouselSlide = styled.div<CarouselSlideProps>`
   display: flex;
   width: 100%;
-  height: fit-content;
   transform: translateX(-${({ $translatex }) => $translatex}%);
   transition: ${({ $transition }) => $transition};
 `;

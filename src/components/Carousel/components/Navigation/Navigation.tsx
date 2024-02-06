@@ -15,6 +15,7 @@ const NavigationContainer = styled.div<NavigationContainerProps>`
     align-items: center;
     border: none;
     border-radius: 100%;
+    background: none;
   }
 `;
 

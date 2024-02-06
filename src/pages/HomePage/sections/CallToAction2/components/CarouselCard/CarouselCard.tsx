@@ -8,6 +8,7 @@ const CardContainer = styled.div`
   overflow: hidden;
   width: fit-content;
   margin: 20px;
+  align-self: stretch;
 `;
 
 const Card = styled.div`
@@ -15,6 +16,7 @@ const Card = styled.div`
   box-sizing: border-box;
   background: #f7f3eb;
   border-radius: 25px;
+  height: 100%;
 `;
 
 const LeftSide = styled.div`
