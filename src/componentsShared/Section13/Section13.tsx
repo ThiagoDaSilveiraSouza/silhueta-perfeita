@@ -15,7 +15,10 @@ const FaqContainer = styled.div<FaqContainerPros>`
   justify-content: space-between;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 81px 59px;
+  padding: ${() => {
+    const { isMobile } = useWindowSize();
+    return !isMobile ? "81px 59px" : "81px 0px";
+  }};
   font-family: ${({ theme }) => theme.fonts.body};
   details {
     flex: 1 1 40%;
