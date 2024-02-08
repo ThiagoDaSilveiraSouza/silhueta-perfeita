@@ -37,7 +37,11 @@ export const Depoiments = () => {
             <Text>Transformações que falam mais que palavras.</Text>
           </Flex>
           <Flex $flex="0 1 50%">
-            <Carousel itemList={currentItemList} width={"336px"} />
+            {isDesktop ? (
+              currentItemList
+            ) : (
+              <Carousel itemList={currentItemList} width={"336px"} />
+            )}
           </Flex>
         </Flex>
       </CentralizerContainer>
