@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ThemeProps } from "../../../../../../interfaces";
 
 interface BeforeAndAfterCardProps {
   cardData: {
@@ -22,13 +23,18 @@ const ImageContainer = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+interface ButtonContainerProps {
+  theme: ThemeProps;
+}
+
+const ButtonContainer = styled.div<ButtonContainerProps>`
   display: flex;
   border: 2px solid #e0d1b0;
   background: #e0d1b0;
   border-radius: 5px;
   height: 34px;
   overflow: hidden;
+  font-family: ${({ theme }) => theme.fonts.body};
 
   button {
     flex: 1 1 100%;
