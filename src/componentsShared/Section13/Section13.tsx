@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { LazzyAnimationContainer } from "../../components/LazzyAnimationContainer";
-import { CentralizerContainer, Flex, Heading } from "../../componentsStyles";
+import {
+  CentralizerContainer,
+  Flex,
+  Gradient,
+  Heading,
+} from "../../componentsStyles";
 import { ThemeProps } from "../../interfaces";
 import { useWindowSize } from "../../hooks";
 
@@ -20,6 +25,7 @@ const FaqContainer = styled.div<FaqContainerPros>`
     return !isMobile ? "81px 59px" : "81px 0px";
   }};
   font-family: ${({ theme }) => theme.fonts.body};
+  background: white;
   details {
     flex: 1 1 40%;
     font-size: 15px;
@@ -93,10 +99,12 @@ export const Section13 = () => {
         $justify-content="center"
         $flex="1 1 100%"
         $margin={isDesktop ? "268px 0 0 0" : "79px 0 0 0"}
+       
       >
         <CentralizerContainer>
-          <Flex $flex-direction="column">
+          <Flex $flex-direction="column"  $gap="72px">
             <Heading $text-align="center">Dúvidas frequentes</Heading>
+            <Gradient $width="70%" $top="10%" $left="15%" />
             <FaqContainer>
               {faqList.map((faqData, index) => {
                 const currentIndex = (index + 1).toString();
