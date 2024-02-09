@@ -16,7 +16,7 @@ export const MainContainer = () => {
           <img
             src={logoImg}
             alt="pedido-realizado-icon"
-            style={{ width: "'177px" }}
+            style={{ width: "'177px", marginBottom: "50px" }}
           />
           <Flex
             $flex-direction="column"

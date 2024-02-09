@@ -30,6 +30,7 @@ export const MainButton = styled.button<MainButtonProps>`
   color: ${({ theme, $color }) =>
     $color ? $color : theme.colors.secondaryBackgroundColor};
   font-size: ${({ theme }) => theme.fonts.bodySize2};
+  font-family : ${({ theme }) => theme.fonts.body};
   text-align: center;
   padding: 15px 30px;
   border: none;
