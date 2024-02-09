@@ -23,7 +23,7 @@ export const MainContainer = () => {
             $align-items="center"
             $max-width="816px"
           >
-            <Heading>
+            <Heading $text-align="center">
               Tenha o <b>corpo dos sonhos</b> com a cinta modeladora{" "}
               <b>Silhueta Perfeita</b>
             </Heading>

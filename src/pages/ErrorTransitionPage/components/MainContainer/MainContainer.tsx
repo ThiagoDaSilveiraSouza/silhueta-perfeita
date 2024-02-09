@@ -32,7 +32,9 @@ export const MainContainer = () => {
             $gap="48px"
           >
             <Flex $max-width="570px">
-              <Heading>Ops...Ocorreu uma falha na transação</Heading>
+              <Heading $text-align="center">
+                Ops...Ocorreu uma falha na transação
+              </Heading>
             </Flex>
             <Flex
               $flex-direction="column"

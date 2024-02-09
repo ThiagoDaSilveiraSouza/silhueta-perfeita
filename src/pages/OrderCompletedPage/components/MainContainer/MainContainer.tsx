@@ -14,7 +14,12 @@ export const MainContainer = () => {
     <LazzyAnimationContainer>
       <CentralizerContainer>
         <Flex $flex-direction="column" $align-items="center">
-          <Flex $gap="88px" $flex-direction="column" $align-items="center" $margin="0 0 24px 0">
+          <Flex
+            $gap="88px"
+            $flex-direction="column"
+            $align-items="center"
+            $margin="0 0 24px 0"
+          >
             <img
               src={logoImg}
               alt="pedido-realizado-icon"
@@ -23,7 +28,9 @@ export const MainContainer = () => {
             <img src={RightIcon} alt="pedido-realizado-icon" />
           </Flex>
           <Flex $max-width="570px" $margin="0 0 56px 0">
-            <Heading>Parabéns, seu pedido foi concluído com sucesso!</Heading>
+            <Heading $text-align="center">
+              Parabéns, seu pedido foi concluído com sucesso!
+            </Heading>
           </Flex>
           <Flex
             $flex-direction="column"

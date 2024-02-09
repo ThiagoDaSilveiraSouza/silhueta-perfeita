@@ -19,7 +19,7 @@ export const MainContainer = () => {
             <img src={BarCodeIcon} alt="pedido-realizado-icon" />
           </Flex>
           <Flex $justify-content="center" $margin="11px 0 0 0">
-            <Heading>Boleto gerado com sucesso!</Heading>
+            <Heading $text-align="center">Boleto gerado com sucesso!</Heading>
           </Flex>
           <Flex
             $flex-direction="column"
@@ -44,7 +44,12 @@ export const MainContainer = () => {
               O seu boleto vence em 2 dias
             </Text>
           </Flex>
-          <Flex $flex-direction="column" $align-items="center" $margin="39px 0 0 0" $gap="21px">
+          <Flex
+            $flex-direction="column"
+            $align-items="center"
+            $margin="39px 0 0 0"
+            $gap="21px"
+          >
             <MainButton $background="#323232">VISUALIZAR MEU BOLETO</MainButton>
             <a
               href="#"
