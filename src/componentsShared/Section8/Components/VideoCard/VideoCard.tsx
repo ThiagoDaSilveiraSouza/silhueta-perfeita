@@ -1,5 +1,5 @@
 import styled, { CSSProperties } from "styled-components";
-import PlayIcon from "../../../../assets/play-icon.svg";
+// import PlayIcon from "../../../../assets/play-icon.svg";
 
 interface VideoCardProps {
   videoData: {
@@ -21,6 +21,8 @@ const VideoCardContainer = styled.a<VideoCardContaiProps>`
   height: 400px;
   border-radius: 20px;
   overflow: hidden;
+  box-sizing: border-box;
+  margin: 5px;
 
   &:hover {
     transform: scale(1.03);
@@ -29,9 +31,9 @@ const VideoCardContainer = styled.a<VideoCardContaiProps>`
   }
 `;
 
-const IconImage = styled.img`
-  position: absolute;
-`;
+// const IconImage = styled.img`
+//   position: absolute;
+// `;
 
 export const VideoCard = ({ videoData }: VideoCardProps) => {
   return (
@@ -47,7 +49,7 @@ export const VideoCard = ({ videoData }: VideoCardProps) => {
         title="Como melhorar seu código React? #shorts"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
-      <IconImage src={PlayIcon} alt="play-icon" />
+      {/* <IconImage src={PlayIcon} alt="play-icon" /> */}
     </VideoCardContainer>
   );
 };

@@ -16,7 +16,7 @@ import {
 
 export const HomePage = () => {
   return (
-    <>
+    <div style={{ position: "relative", overflow: "hidden" }}>
       <Gradient $width="clamp(300px, 50%, 601px)" $top="-15%" $left="-9%" />
       <Gradient $width="clamp(600px, 100%, 1241px)" $top="-50%" $right="-25%" />
       <PageContainer>
@@ -35,6 +35,6 @@ export const HomePage = () => {
         <Section13 />
         <Footer />
       </PageContainer>
-    </>
+    </div>
   );
 };

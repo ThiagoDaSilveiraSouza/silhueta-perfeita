@@ -83,7 +83,10 @@ export const Section8 = () => {
           </TextContainer>
           <VideosContainer>
             {isMobile ? (
-              <Carousel itemList={VideoCardList} width={"225px"} />
+              <Carousel
+                itemList={VideoCardList}
+                width={"235px"}
+              />
             ) : (
               VideoCardList
             )}

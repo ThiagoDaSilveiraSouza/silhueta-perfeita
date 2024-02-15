@@ -12,7 +12,7 @@ interface CentralizerContainerProps extends CssBaseProps {
 }
 
 export const CentralizerContainer = styled.div<CentralizerContainerProps>`
-position: relative;
+  position: relative;
   display: flex;
   align-self: center;
   max-width: 90vw;

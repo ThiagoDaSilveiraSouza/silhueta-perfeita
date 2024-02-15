@@ -39,6 +39,10 @@ const FaqContainer = styled.div<FaqContainerPros>`
       b {
         color: #cebc96;
       }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
     }
   }
   p {
@@ -99,10 +103,9 @@ export const Section13 = () => {
         $justify-content="center"
         $flex="1 1 100%"
         $margin={isDesktop ? "268px 0 0 0" : "79px 0 0 0"}
-       
       >
         <CentralizerContainer>
-          <Flex $flex-direction="column"  $gap="72px">
+          <Flex $flex-direction="column" $gap="72px">
             <Heading $text-align="center">Dúvidas frequentes</Heading>
             <Gradient $width="70%" $top="10%" $left="15%" />
             <FaqContainer>
