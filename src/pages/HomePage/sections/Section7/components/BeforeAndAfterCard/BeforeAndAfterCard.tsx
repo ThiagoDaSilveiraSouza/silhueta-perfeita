@@ -36,19 +36,24 @@ const ButtonContainer = styled.div<ButtonContainerProps>`
   overflow: hidden;
   font-family: ${({ theme }) => theme.fonts.body};
 
-  button {
+  p {
     flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
     border: none;
-    margin: none;
+    margin: 0;
     outline: none;
     padding: 0;
+    text-transform: uppercase;
   }
 `;
 
-const BeforeButton = styled.button`
-  background: "white";
+const BeforeText = styled.p`
+  background: white;
 `;
-const AfterButton = styled.button`
+const AfterText = styled.p`
   background: none;
 `;
 
@@ -62,8 +67,8 @@ export const BeforeAndAfterCard = ({ cardData }: BeforeAndAfterCardProps) => {
         <img src={afterImg} alt="after-image" />
       </ImageContainer>
       <ButtonContainer>
-        <BeforeButton>Antes</BeforeButton>
-        <AfterButton>Depois</AfterButton>
+        <BeforeText>Antes</BeforeText>
+        <AfterText>Depois</AfterText>
       </ButtonContainer>
     </CardContainer>
   );

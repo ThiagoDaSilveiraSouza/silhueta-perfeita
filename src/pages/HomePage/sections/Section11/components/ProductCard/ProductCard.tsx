@@ -23,7 +23,7 @@ const ProductCardContainer = styled.div<ProductCardContainer>`
   min-height: 470px;
   padding: 26px 20px;
   border-radius: 20px;
-  box-shadow: 0 0 5px 0 gray;
+  box-shadow: 0px 15px 30px -15px rgba(0, 0, 0, 0.25);
   font-family: ${({ theme }) => theme.fonts.body};
   color: gray;
   transition: 0.3s;

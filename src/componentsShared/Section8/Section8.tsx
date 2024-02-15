@@ -34,7 +34,6 @@ const TextContainer = styled.div`
 const VideosContainer = styled.div`
   flex: 1 1 auto;
   display: flex;
-  gap: 14px;
   justify-content: center;
   flex-wrap: wrap;
 `;
