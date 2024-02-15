@@ -1,4 +1,12 @@
-import { ReactNode, useCallback, useMemo, useState, useEffect } from "react";
+import {
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+  useEffect,
+  MouseEvent,
+  TouchEvent,
+} from "react";
 import styled, { CSSProperties } from "styled-components";
 import { CssBaseProps } from "../../interfaces";
 import { Navigation } from "./components";
@@ -59,6 +67,7 @@ const SlideItem = styled.div`
   object-fit: cover;
   box-sizing: border-box;
   scroll-snap-align: start;
+  user-select: none;
 `;
 
 interface CarouselProps {
@@ -86,6 +95,7 @@ export const Carousel = ({
 
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
+  const [mousePosition, setMousePosition] = useState<null | number>(null);
 
   const nextSlide = useCallback(() => {
     const isLastSlideIndex = currentSlideIndex === updatedListItem.length - 2;
@@ -136,6 +146,33 @@ export const Carousel = ({
     });
   }, [updatedListItem, currentSlideIndex]);
 
+  const mouseHandlerDonw = (event: MouseEvent<HTMLDivElement>) => {
+    const currentMousePosition = event.clientX;
+    setMousePosition(currentMousePosition);
+  };
+
+  const mouseHandlerMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (mousePosition !== null) {
+      const currentMousePosition = event.clientX;
+      currentMousePosition > mousePosition && prevSlide();
+      currentMousePosition < mousePosition && nextSlide();
+      setMousePosition(null);
+    }
+  };
+
+  const mouseHandlerTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const currentMousePosition = event.touches[0].clientX;
+    setMousePosition(currentMousePosition);
+  };
+
+  const onHandlerTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    if (mousePosition !== null) {
+      const currentMousePosition = event.touches[0].clientX;
+      currentMousePosition > mousePosition && prevSlide();
+      currentMousePosition < mousePosition && nextSlide();
+      setMousePosition(null);
+    }
+  };
   useEffect(() => {
     setCurrentIndex && setCurrentIndex(currentSlideIndex);
   }, [currentSlideIndex, setCurrentIndex]);
@@ -145,7 +182,14 @@ export const Carousel = ({
       style={{ position: "relative", flex: "1 1 auto" }}
       $gap={controlsGapDistance}
     >
-      <CarouselContainer width={width} height={height}>
+      <CarouselContainer
+        width={width}
+        height={height}
+        onMouseDown={mouseHandlerDonw}
+        onMouseMove={mouseHandlerMove}
+        onTouchStart={mouseHandlerTouchStart}
+        onTouchMove={onHandlerTouchMove}
+      >
         <CarouselSlide
           $translatex={currentSlideIndex * 100}
           $transition={transitionEnabled ? "0.6s" : "none"}
