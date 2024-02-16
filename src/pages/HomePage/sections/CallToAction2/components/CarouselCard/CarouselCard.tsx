@@ -46,11 +46,16 @@ const RightSide = styled.div`
   background: #f7f3eb;
   border-radius: 0 25px 25px 0;
   object-fit: contain;
+  overflow-x: hidden;
   img {
     position: absolute;
     width: ${() => {
       const { isMobile } = useWindowSize();
       return !isMobile ? "274px" : "157px";
+    }};
+    right: ${() => {
+      const { isMobile } = useWindowSize();
+      return isMobile && "-25%";
     }};
     object-fit: contain;
     z-index: 0;
@@ -112,7 +117,7 @@ export const CarouselCard = ({
               fontSize: !isMobile ? "137.848px" : "121.85px",
             }}
           >
-            {title}
+            {title} ereret
           </MainTitle>
           <Subtitle as="h3" style={{ fontSize: !isMobile ? "18px" : "16px" }}>
             {subtitle}

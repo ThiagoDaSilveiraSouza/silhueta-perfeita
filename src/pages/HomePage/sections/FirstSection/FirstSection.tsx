@@ -10,7 +10,7 @@ import logo from "../../../../assets/logo.png";
 import numberOneIcon from "../../../../assets/number-one-icon.svg";
 import PlayButton from "../../../../assets/Play Button.svg";
 import Banner1 from "../../../../assets/banner_1.png";
-import { LeftSide, RightSide } from "./style";
+import { IFrameVideo, LeftSide, RightSide } from "./style";
 import { useWindowSize } from "../../../../hooks";
 import { VideoModal } from "./components";
 import { useState } from "react";
@@ -121,13 +121,13 @@ export const FirstSection = () => {
             useModal={[videoModalIsOpen, setVideoModalisOpen]}
             modalCardPadding="0"
           >
-            <iframe
-              width="672"
-              height="378"
-              src="https://www.youtube.com/embed/MczwQBm6c8E?si=IjJN32rHNF6_KDlK&amp;controls=0"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            />
+            {videoModalIsOpen && (
+              <IFrameVideo
+                src="https://www.youtube.com/embed/MczwQBm6c8E?si=IjJN32rHNF6_KDlK&amp;controls=0"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              />
+            )}
           </VideoModal>
         </Flex>
       </CentralizerContainer>

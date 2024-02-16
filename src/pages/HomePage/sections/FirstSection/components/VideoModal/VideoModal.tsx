@@ -14,38 +14,39 @@ interface ModalProps {
   modalCardPadding?: CSSProperties["padding"];
   backgroundColor?: CSSProperties["background"];
   backgroundHandleClose?: () => void;
+  oncClose?: () => void;
 }
 interface stylesProps {
-  modalisopen: string;
-  position: NonNullable<ModalProps["position"]>;
+  $modalisopen: string;
+  $position: NonNullable<ModalProps["position"]>;
 }
 
 interface ModalBackgroundProps {
-  backgroundcolor: NonNullable<ModalProps["backgroundColor"]>;
+  $backgroundcolor: NonNullable<ModalProps["backgroundColor"]>;
 }
 
 interface ModalCardProps {
-  slidedirection: NonNullable<ModalProps["slideDirection"]>;
-  modalcardbackground: NonNullable<ModalProps["modalCardBackground"]>;
-  modalcardpadding: NonNullable<ModalProps["modalCardPadding"]>;
-  modalcardborderradios: NonNullable<ModalProps["modalCardBorderRadios"]>;
-  modalcardwidth: NonNullable<ModalProps["modalCardWidth"]>;
-  modalisopen: string;
+  $slidedirection: NonNullable<ModalProps["slideDirection"]>;
+  $modalcardbackground: NonNullable<ModalProps["modalCardBackground"]>;
+  $modalcardpadding: NonNullable<ModalProps["modalCardPadding"]>;
+  $modalcardborderradios: NonNullable<ModalProps["modalCardBorderRadios"]>;
+  $modalcardwidth: NonNullable<ModalProps["modalCardWidth"]>;
+  $modalisopen: string;
 }
 
 const ModalContainer = styled.div<stylesProps>`
-  position: ${({ position }) => position};
+  position: ${({ $position }) => $position};
   left: 0;
   top: 0;
-  width: ${({ position }) => (position === "absolute" ? "100%" : "100vw")};
-  height: ${({ position }) => (position === "absolute" ? "100%" : "100vh")};
+  width: ${({ $position }) => ($position === "absolute" ? "100%" : "100vw")};
+  height: ${({ $position }) => ($position === "absolute" ? "100%" : "100vh")};
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: ${({ modalisopen }) => (modalisopen === "true" ? "1" : "0")};
-  visibility: ${({ modalisopen }) =>
-    modalisopen === "true" ? "visible" : "hidden"};
+  opacity: ${({ $modalisopen }) => ($modalisopen === "true" ? "1" : "0")};
+  visibility: ${({ $modalisopen }) =>
+    $modalisopen === "true" ? "visible" : "hidden"};
   transition: 0.8s;
 `;
 
@@ -55,7 +56,7 @@ const ModalBackground = styled.div<ModalBackgroundProps>`
   top: 0;
   width: 100%;
   height: 100%;
-  background: ${({ backgroundcolor }) => backgroundcolor};
+  background: ${({ $backgroundcolor }) => $backgroundcolor};
 `;
 
 const transformDirections: Record<
@@ -72,17 +73,18 @@ const ModalCard = styled.div<ModalCardProps>`
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: ${({ modalcardpadding }) => modalcardpadding};
-  border-radius: ${({ modalcardborderradios }) => modalcardborderradios};
-  width: ${({ modalcardwidth }) => modalcardwidth || "auto"};
-  max-width: 100%;
-  max-height: 100%;
+  padding: ${({ $modalcardpadding }) => $modalcardpadding};
+  border-radius: ${({ $modalcardborderradios }) => $modalcardborderradios};
+  width: ${({ $modalcardwidth }) => $modalcardwidth || "auto"};
+  max-width: 95vw;
+  max-height: 95vh;
   box-sizing: border-box;
-  background: ${({ modalcardbackground }) => modalcardbackground};
-  transform: ${({ modalisopen, slidedirection: slideDirection }) =>
-    modalisopen === "true"
+  background: ${({ $modalcardbackground: modalcardbackground }) =>
+    modalcardbackground};
+  transform: ${({ $modalisopen, $slidedirection }) =>
+    $modalisopen === "true"
       ? "translateY(0)"
-      : transformDirections[slideDirection]};
+      : transformDirections[$slidedirection]};
   transition: 0.8s;
   overflow-y: auto;
   box-sizing: border-box;
@@ -110,7 +112,6 @@ const ModalCartTitleContainer = styled.div`
 `;
 const ModalCardCloseButton = styled.button`
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,22 +172,28 @@ export const VideoModal = ({
   backgroundColor = "rgba(0, 0, 0, 0.3)",
   backgroundHandleClose,
   modalCardWidth = "auto",
-  position = "fixed",
+  position: position = "fixed",
+  oncClose,
 }: ModalProps) => {
   const [modalIsOpen, setModalIsOpen] = useModal;
-  const closeModal = () =>
+  const closeModal = () => {
     backgroundHandleClose ? backgroundHandleClose() : setModalIsOpen(false);
+    oncClose && oncClose();
+  };
 
   return (
-    <ModalContainer modalisopen={modalIsOpen.toString()} position={position}>
-      <ModalBackground onClick={closeModal} backgroundcolor={backgroundColor} />
+    <ModalContainer $modalisopen={modalIsOpen.toString()} $position={position}>
+      <ModalBackground
+        onClick={closeModal}
+        $backgroundcolor={backgroundColor}
+      />
       <ModalCard
-        modalisopen={modalIsOpen.toString()}
-        slidedirection={slideDirection}
-        modalcardbackground={modalCardBackground}
-        modalcardpadding={modalCardPadding}
-        modalcardborderradios={modalCardBorderRadios}
-        modalcardwidth={modalCardWidth}
+        $modalisopen={modalIsOpen.toString()}
+        $slidedirection={slideDirection}
+        $modalcardbackground={modalCardBackground}
+        $modalcardpadding={modalCardPadding}
+        $modalcardborderradios={modalCardBorderRadios}
+        $modalcardwidth={modalCardWidth}
       >
         <ModalCartTitleContainer>
           <h3>{modalCardTitle}</h3>

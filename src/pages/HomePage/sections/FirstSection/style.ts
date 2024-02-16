@@ -35,3 +35,8 @@ export const RightSide = styled.div`
   }
 `;
 
+export const IFrameVideo = styled.iframe`
+  width: 672px;
+  height: 378px;
+  max-width: 100%;
+`

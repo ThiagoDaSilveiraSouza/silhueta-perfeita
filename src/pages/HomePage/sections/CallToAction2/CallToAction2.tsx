@@ -14,7 +14,7 @@ import { Carousel } from "../../../../components/Carousel";
 import { useWindowSize } from "../../../../hooks";
 
 export const CallToAction2 = () => {
-  const { isDesktop } = useWindowSize();
+  const { isDesktop, isMobile } = useWindowSize();
   const cardsComponentsList = cardsList.map((currentCardProps, index) => (
     <CarouselCard key={"carousel-card-" + index} {...currentCardProps} />
   ));
@@ -36,12 +36,12 @@ export const CallToAction2 = () => {
               $gap="45px"
               $flex={"1 1 420px"}
               $padding="55px 0 0 0 "
-              $align-items={isDesktop ? "start" : "center"}
+              $align-items={isMobile ? "start" : "center"}
             >
               <Heading
                 as="h2"
                 style={{
-                  textAlign: isDesktop ? "start" : "center",
+                  textAlign: isMobile ? "start" : "center",
                   maxWidth: "498px",
                 }}
               >

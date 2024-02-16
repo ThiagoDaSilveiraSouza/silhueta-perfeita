@@ -11,7 +11,7 @@ export const ArrowCicle = ({
   color = "white",
   backgroundColor = "#323232",
   direction = "right",
-  size = "28px",
+  size = 28,
 }: ArrowCircleProps) => {
   const rotateByDirection: Record<
     NonNullable<ArrowCircleProps["direction"]>,
