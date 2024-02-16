@@ -5,7 +5,6 @@ import { useWindowSize } from "../../../../../../hooks";
 const CardContainer = styled.div`
   flex: 1 1 100%;
   box-sizing: border-box;
-  /* overflow: hidden; */
   width: fit-content;
   margin: 50px 20px 20px;
   align-self: stretch;
@@ -36,9 +35,8 @@ const RightSide = styled.div`
   position: relative;
   flex: ${() => {
     const { isMobile } = useWindowSize();
-    return !isMobile ? "0 1 274px" : "0 1 157px";
+    return !isMobile ? "1 1 274px" : "1 1 157px";
   }};
-
   display: flex;
   justify-content: right;
   align-items: flex-end;
@@ -46,7 +44,11 @@ const RightSide = styled.div`
   background: #f7f3eb;
   border-radius: 0 25px 25px 0;
   object-fit: contain;
-  overflow-x: hidden;
+  overflow: ${(): CSSProperties["overflow"] => {
+    const { isMobile } = useWindowSize();
+    return !isMobile ? "visible" : "hidden";
+  }};
+
   img {
     position: absolute;
     width: ${() => {
@@ -117,7 +119,7 @@ export const CarouselCard = ({
               fontSize: !isMobile ? "137.848px" : "121.85px",
             }}
           >
-            {title} ereret
+            {title}
           </MainTitle>
           <Subtitle as="h3" style={{ fontSize: !isMobile ? "18px" : "16px" }}>
             {subtitle}
