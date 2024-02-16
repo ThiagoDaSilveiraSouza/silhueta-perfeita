@@ -16,6 +16,10 @@ const Card = styled.div`
   background: #f7f3eb;
   border-radius: 25px;
   height: 100%;
+  overflow: ${(): CSSProperties["overflow"] => {
+    const { isMobile } = useWindowSize();
+    return !isMobile ? "visible" : "hidden";
+  }};
 `;
 
 const LeftSide = styled.div`
@@ -43,23 +47,24 @@ const RightSide = styled.div`
   position: relative;
   background: #f7f3eb;
   border-radius: 0 25px 25px 0;
-  object-fit: contain;
-  overflow: ${(): CSSProperties["overflow"] => {
-    const { isMobile } = useWindowSize();
-    return !isMobile ? "visible" : "hidden";
-  }};
+  object-fit: cover;
 
   img {
     position: absolute;
-    width: ${() => {
+    width: ${(): CSSProperties["width"] => {
       const { isMobile } = useWindowSize();
       return !isMobile ? "274px" : "157px";
     }};
+    height: ${(): CSSProperties["height"] => {
+      const { isMobile } = useWindowSize();
+      return !isMobile ? "auto" : "231px";
+    }};
+
     right: ${() => {
       const { isMobile } = useWindowSize();
-      return isMobile && "-25%";
+      return isMobile && "-14%";
     }};
-    object-fit: contain;
+    object-fit: cover;
     z-index: 0;
   }
 `;
@@ -117,6 +122,7 @@ export const CarouselCard = ({
             style={{
               textAlign: "start",
               fontSize: !isMobile ? "137.848px" : "121.85px",
+              lineHeight: "100%",
             }}
           >
             {title}
