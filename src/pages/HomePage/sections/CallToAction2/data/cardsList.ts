@@ -1,4 +1,4 @@
-import cardWomanImage from "../../../../../assets/woman-image.png"
+import cardWomanImage from "../../../../../assets/woman-call-to-action-2.png"
 
 export const cardsList = [
   {

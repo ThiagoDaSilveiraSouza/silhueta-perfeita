@@ -168,8 +168,8 @@ export const Carousel = ({
   const onHandlerTouchMove = (event: TouchEvent<HTMLDivElement>) => {
     if (mousePosition !== null) {
       const currentMousePosition = event.touches[0].clientX;
-      currentMousePosition > mousePosition && prevSlide();
-      currentMousePosition < mousePosition && nextSlide();
+      currentMousePosition + 5 > mousePosition && prevSlide();
+      currentMousePosition - 5 < mousePosition && nextSlide();
       setMousePosition(null);
     }
   };

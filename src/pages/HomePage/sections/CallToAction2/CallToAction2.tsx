@@ -25,7 +25,7 @@ export const CallToAction2 = () => {
       <LazzyAnimationContainer>
         <CentralizerContainer $justify-content="center">
           <Flex
-            $padding={isDesktop ? "279px 0 0 0" : "72px 0 0 0"}
+            $padding={isDesktop ? "249px 0 0 0" : "42px 0 0 0"}
             $flex-wrap="wrap"
             $gap="56px"
             $max-width="100%"
@@ -35,7 +35,7 @@ export const CallToAction2 = () => {
               $flex-direction="column"
               $gap="45px"
               $flex={"1 1 420px"}
-              $padding="25px 0 0 0 "
+              $padding="55px 0 0 0 "
               $align-items={isDesktop ? "start" : "center"}
             >
               <Heading

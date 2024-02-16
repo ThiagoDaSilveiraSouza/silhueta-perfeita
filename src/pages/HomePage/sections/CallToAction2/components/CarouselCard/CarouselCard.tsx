@@ -5,9 +5,9 @@ import { useWindowSize } from "../../../../../../hooks";
 const CardContainer = styled.div`
   flex: 1 1 100%;
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: fit-content;
-  margin: 20px;
+  margin: 50px 20px 20px;
   align-self: stretch;
 `;
 
@@ -47,8 +47,11 @@ const RightSide = styled.div`
   border-radius: 0 25px 25px 0;
   object-fit: contain;
   img {
-    width: 100%;
-    transform: scale(1.3) translateX(10px);
+    position: absolute;
+    width: ${() => {
+      const { isMobile } = useWindowSize();
+      return !isMobile ? "274px" : "157px";
+    }};
     object-fit: contain;
     z-index: 0;
   }
@@ -97,15 +100,24 @@ export const CarouselCard = ({
   text,
   title,
 }: CarouselCardProps) => {
+  const { isMobile } = useWindowSize();
+
   return (
     <CardContainer>
       <Card>
         <LeftSide>
-          <MainTitle style={{ textAlign: "start" }} $font-size="10px">
+          <MainTitle
+            style={{
+              textAlign: "start",
+              fontSize: !isMobile ? "137.848px" : "121.85px",
+            }}
+          >
             {title}
           </MainTitle>
-          <Subtitle as="h3">{subtitle}</Subtitle>
-          <Text>{text}</Text>
+          <Subtitle as="h3" style={{ fontSize: !isMobile ? "18px" : "16px" }}>
+            {subtitle}
+          </Subtitle>
+          <Text style={{ fontSize: !isMobile ? "16px" : "14px" }}>{text}</Text>
         </LeftSide>
         <RightSide>
           <img src={imgUrl} alt="woman-image" />
