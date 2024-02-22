@@ -31,4 +31,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist
-        remote-dir: /home/u542400898/domains/cintasilhuetaperfeita.com.br/public_html
+        remote-dir: /
