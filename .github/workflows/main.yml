@@ -1,34 +1,27 @@
-name: Deploy to Hostinger
-
-on:
-  push:
-    branches:
-      - main # ou a branch que deseja monitorar
-
+on: push
+name: 🚀 Deploy website on push
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
 
-    - name: Install Dependencies
-      run: npm install
+      - name: 📦 Install Dependencies
+        run: npm install
 
-    - name: Build Vite App
-      run: npm run build
+      - name: 🚀 Build Vite App
+        run: npm run build
 
-    - name: Deploy to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      with:
-        ftp-server: ftp.cintasilhuetaperfeita.com.br
-        ftp-username: u542400898.github_deploy
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist
-        git-ftp-args: "--insecure" # Use este argumento se necessário
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
