@@ -27,8 +27,8 @@ jobs:
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        ftp-server: ftp.cintasilhuetaperfeita.com.br
+        ftp-username: u542400898.github_deploy
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist
-        remote-dir: /
+        git-ftp-args: "--insecure" # Use este argumento se necessário
