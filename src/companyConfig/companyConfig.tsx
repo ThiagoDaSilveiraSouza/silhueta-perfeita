@@ -1,7 +1,7 @@
 export const companyConfig = {
   name: "Silhueta Perfeita",
-  cnpj: "00.000.000/0001-0",
-  owner: "Pós Plástica",
+  cnpj: "45.043.383/0001-13",
+  owner: "Sophiamaria comercio de artigos do vestuario LTDA.",
   phone: "(21) 0000-0000",
   openinghours: "Segunda a sexta-feira das 9:00h às 18:00h",
   address: "Rua Heitor de Moura Estevão ",
