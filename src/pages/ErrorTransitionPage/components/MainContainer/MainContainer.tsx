@@ -20,7 +20,7 @@ export const MainContainer = () => {
             $align-items="center"
             $justify-content="center"
             $gap="73px"
-            $margin="76px 0 0 0"
+            // $margin="76px 0 0 0"
           >
             <img src={logoImg} alt="pedido-realizado-icon" />
             <img src={ErrorIcon} alt="pedido-realizado-icon" />
